@@ -10,8 +10,10 @@ dom.watch();
 
 import { 
     AttributesAPI,
-    RowConfig
+    RowConfig,
+    Sort
 } from './types';
+import { lastIndexOf } from 'lodash';
 // import { get } from 'lodash';
 
 /**
@@ -42,7 +44,8 @@ export default class JsTable {
         private styleTable:string,
         private cbSelection:(data:object)=>void,
         private fnFetch:(page:number,order:string,columnOrdering:string)=>any,
-        private attributesFetch:AttributesAPI
+        private attributesFetch:AttributesAPI,
+        protected sort:Sort
     ) {
         this.idTable = idTable;
         this.idPagination = idPagination;
@@ -57,7 +60,8 @@ export default class JsTable {
         this.idSelectedRow = '';
         this.cbSelection = cbSelection;
         this.fnFetch = fnFetch;
-        this.attributesFetch = attributesFetch
+        this.attributesFetch = attributesFetch,
+        this.sort = sort;
     }
 
     /**
@@ -68,7 +72,8 @@ export default class JsTable {
         console.log('pages:', this.pages);
         console.log('rows', this.rows);
         console.log('actualPage', this.actualPage);
-        console.log('headerConfig',this.headerConfig)
+        console.log('headerConfig',this.headerConfig);
+        console.log('sort',this.sort)
     }
 
     /**
@@ -105,16 +110,19 @@ export default class JsTable {
 
         this.generatePagination();
         this.printOnDOM(this.idPagination);
-        this.givePaginationFunctionality();
 
+        this.givePaginationFunctionality();
         this.giveFunctionality();
+        this.giveSortFunctionality();
     }
 
     generateHeader(){
         let header = `<thead><tr>`;
 
         this.headerConfig.map((element:any)=>{
-            let th = `<th scope="col">${element.text}</th>`;
+            let th = `<th id="${this.idTable}-header-${element.columnNameDB}" 
+            class="${element.css} ${element.columnNameDB == this.sort.column ? `sort-${this.sort.order}` : null}" 
+            scope="col">${element.text}</th>`;
             header+=th;
         });
 
@@ -122,18 +130,16 @@ export default class JsTable {
         
         this.tableContent+=header;
 
-        // const table = document.getElementById(this.idTable) as HTMLElement;
-
     }
 
     generatePagination(){
-        this.tableContent += `<div class="pagination-table">`;
+        document.getElementById(`pagination-${this.idTable}`)!.classList.add(`pagination-table`);
 
         for(let i=3;i>=1;i--){
             if(this.actualPage-i>0){
-                this.tableContent+=`<div><span>${this.actualPage-i}</span></div>`;
+                this.tableContent+=`<div>${this.actualPage-i}</div>`;
             }else{
-                this.tableContent+=`<div class="disabled"><span></span></div>`;
+                this.tableContent+=`<div class="disabled"></div>`;
             }
         }
 
@@ -152,14 +158,11 @@ export default class JsTable {
         for(let i=1;i<=3;i++){
 
             if(this.actualPage+i<=this.pages){
-                this.tableContent+=`<div><span>${this.actualPage+i}</span></div>`;
+                this.tableContent+=`<div>${this.actualPage+i}</div>`;
             }else{
-                this.tableContent+=`<div class="disabled"><span></span></div>`;
+                this.tableContent+=`<div class="disabled"></div>`;
             }
         }
-
-        this.tableContent+='</div>';      
-
     }
 
     /**
@@ -169,6 +172,37 @@ export default class JsTable {
         const table = document.getElementById(idDOM) as HTMLElement;
         table.innerHTML = this.tableContent;
         this.tableContent = '';
+    }
+
+    giveSortFunctionality(){
+        document.querySelectorAll(`#${this.idTable} th`).forEach(th=>{
+            th.addEventListener('click',async(e)=>{
+                let id = ((<HTMLInputElement>e.target).id);
+
+                const sortColumn = id.substr(id.lastIndexOf('-')+1,id.length);
+                
+                if(this.sort.column === sortColumn){
+
+                    if(this.sort.order === 'ASC'){
+                        this.sort.order = 'DESC';
+                    }else{
+                        this.sort.order = 'ASC';
+                    }
+                }
+
+                this.sort.column = sortColumn;
+
+                const data = await this.fnFetch(this.actualPage,this.sort.order,this.sort.column);
+                this.updateDataTabla(data);
+                this.printTable();
+                
+
+
+                /* console.log(id.length);
+                console.log(id.lastIndexOf('-')); */
+
+            })
+        })
     }
 
     givePaginationFunctionality(){
@@ -185,44 +219,56 @@ export default class JsTable {
                     return;
                 }
 
-                const data = await this.fnFetch(page,'ASC','id');
+                const data = await this.fnFetch(page,this.sort.order,this.sort.column);
                 this.updateDataTabla(data);
-                        }
+            }
 
         });
 
         document.getElementById(`${this.idTable}-firstPage`)!.addEventListener('click',async()=>{
 
                 if(this.actualPage!==1){
-                    const data = await this.fnFetch(1,'ASC','id');
+                    const data = await this.fnFetch(1,this.sort.order,this.sort.column);
                     this.updateDataTabla(data);
                 }
         });
 
         document.getElementById(`${this.idTable}-nextPage`)!.addEventListener('click',async()=>{
-            const data = await this.fnFetch(this.actualPage+1,'ASC','id');
+            const data = await this.fnFetch(this.actualPage+1,this.sort.order,this.sort.column);
             this.updateDataTabla(data);
         });
 
         document.getElementById(`${this.idTable}-lastPage`)!.addEventListener('click',async()=>{
             if(this.actualPage!==this.pages){
-                const data = await this.fnFetch(this.pages,'ASC','id');
+                const data = await this.fnFetch(this.pages,this.sort.order,this.sort.column);
                 this.updateDataTabla(data);
             }
         });
 
         document.getElementById(`${this.idTable}-previousPage`)!.addEventListener('click',async()=>{
             if(this.actualPage>1){
-                const data = await this.fnFetch(this.actualPage-1,'ASC','id');
+                const data = await this.fnFetch(this.actualPage-1,this.sort.order,this.sort.column);
                 this.updateDataTabla(data);
             }
         });
 
-        
+        document.querySelectorAll(`#pagination-users-info div`).forEach((page,i)=>{
+            page.addEventListener('click',async(e)=>{
+                const pageNumber = parseInt(((<HTMLInputElement>e.target).innerText),10);
+                
+                if(isNaN(pageNumber)){
+                    return;
+                }
+
+                const data = await this.fnFetch(pageNumber,this.sort.order,this.sort.column);
+                this.updateDataTabla(data);
+
+            });
+        })
     }
 
     giveFunctionality(){
-        const htmlRows = document.querySelectorAll(`#${this.idTable} tr`);
+        const htmlRows = document.querySelectorAll(`#${this.idTable} tbody tr`);
         
         htmlRows.forEach(row=>{
             row.addEventListener('click',e=>{
@@ -297,40 +343,25 @@ async function loadUsers() {
 
     const headerConfiguration = [
         {text:'ID',columnNameDB:'idAssignature',idHeader:'id-assignature-header'},
-        {text:'Materia',columnNameDB:'nombreMateria',idHeader:'assignature-name-header'}
+        {text:'Materia',columnNameDB:'nombreMateria',idHeader:'assignature-name-header'},
+        {text:'Hora',columnNameDB:'hora',idHeader:'hora-header'}
+
     ]
 
     const rowConfiguration = {
         idRow:'idAssignature',
         columnsCSS:["text-center",''],
-        attributesToPrint:["idAssignature","nombreMateria"]
+        attributesToPrint:["idAssignature","nombreMateria","hora"]
+    }
+
+    const sort = {
+        column:'idAssignature',
+        order:'DESC'
     }
 
     const cbSelection = (data:{[key:string]:any}) => {
-        console.log(data);
-
-        document.getElementById('id')!.innerText = data.id;
-        (<HTMLImageElement>document.getElementById('profile-picture'))!.src = data.avatar;
-        document.getElementById('name')!.innerText = `${data.first_name} ${data.last_name}`;
-        document.getElementById('email')!.innerText = data.email;
+        console.log('cb clicked');
     }
-
-    const constructorUsers = {
-        idTable:'users-info',
-        idPagination:'pagination-users-info',
-        pages:assignatures.pages,
-        data:assignatures.assignatures,
-        headerConfiguration:[
-            {text:'ID',columnNameDB:'idAssignature',idHeader:'id-assignature-header'},
-            {text:'Materia',columnNameDB:'nombreMateria',idHeader:'assignature-name-header'}
-        ],
-        rowsConfiguration:{
-            idRow:'idAssignature',
-            columnsCSS:["text-center",''],
-            attributesToPrint:["idAssignature","nombreMateria"]
-        },
-        styleTable:'default'
-    };
 
     async function hi(page:number,order:string,column:string){
         return await getAssignatures(page,order,column);
@@ -351,7 +382,9 @@ async function loadUsers() {
             pages:'pages',
             actualPage:'actualPage',
             rows:'assignatures'
-        }
+        },
+        sort
+
     );
 
     Users.printTable();

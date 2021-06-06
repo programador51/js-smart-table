@@ -1,7 +1,8 @@
 export type HeaderTable = {
     text:string,
     columnNameDB:string,
-    idHeader:string
+    idHeader:string,
+    css?:string,
 }
 
 export type RowConfig = {
@@ -14,4 +15,10 @@ export type AttributesAPI = {
     pages:string,
     actualPage:string,
     rows:string
+}
+
+export type Sort = {
+    column:string,
+    order:string,
+    
 }
