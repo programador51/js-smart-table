@@ -1,0 +1,26 @@
+{
+  "name": "js-smart-table",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development --watch"
+  },
+  "keywords": [],
+  "author": "programador51",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash": "^4.14.170",
+    "i": "^0.3.6",
+    "npm": "^7.14.0",
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.2.4",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3"
+  }
+}
