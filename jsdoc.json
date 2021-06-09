@@ -1,0 +1,17 @@
+{
+    "plugins":[],
+    "source":{
+        "include":["src"],
+        "includePattern":".ts$",
+        "excludePattern":"(node_modules|public)"
+    },
+    "templates":{
+        "cleverLinks":false,
+        "monospaceLinks":false
+    },
+    "opts":{
+        "recurse":"true",
+        "destination":"./documentation",
+        "template":"node_modules/docdash"
+    }
+}

@@ -22,3 +22,7 @@ export type Sort = {
     order:string,
     
 }
+
+export type tableConfiguration = {
+    idTable:string
+}
