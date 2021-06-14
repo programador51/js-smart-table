@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> helpers/api.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,43 +75,45 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>helpers/api.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><p>This library allows you to</p>
-<ul>
-<li>Print some data in a table with JS Code</li>
-<li>Paginate the data</li>
-<li>Click the rows and save the info reference in the JS code that wii allow you
-do some actions and operate with that information as reference.</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 
+ * @param {number} page - The page requested of the information
+ * @param {string} order - ASC or DESC the data
+ * @param {string} columnOrdering - Which column it's gonna be counted for the sorting (must match with the column table of the table on DB)
+ * @returns {object} 
+ */
+export const getAssignatures = async(page:number=1,order:string="ASC",columnOrdering:string,additionalQuery?:string) => {
+    let query;
+    console.log(additionalQuery);
+
+    if(additionalQuery===undefined){
+        console.log(`No aditional query`);
+        query = await fetch(`http://localhost:4000/api/paso1/materias?pagina=${page}&amp;orden=${order}&amp;columna=${columnOrdering}`);
+    }
+
+    else{
+        console.log(`Aditional query`);
+        query = await fetch(`http://localhost:4000/api/paso1/materias?pagina=${page}&amp;orden=${order}&amp;columna=${columnOrdering}${additionalQuery}`);
+    }
+
+    const assignatures = await query.json();
+
+    // console.log(assignatures.data);
+
+    return assignatures.data;
+}</code></pre>
+        </article>
     </section>
-
-
 
 
 

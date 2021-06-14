@@ -7,7 +7,6 @@
  */
 export const getAssignatures = async(page:number=1,order:string="ASC",columnOrdering:string,additionalQuery?:string) => {
     let query;
-    console.log(additionalQuery);
 
     if(additionalQuery===undefined){
         console.log(`No aditional query`);

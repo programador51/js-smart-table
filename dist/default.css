@@ -1,0 +1,46 @@
+@charset "UTF-8";
+.default {
+  font-size: 0.5em;
+  border-collapse: collapse;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+  margin: auto;
+}
+
+.default tr, .default th {
+  padding: 10px 10px;
+  transition: ease-in 0.25s;
+}
+
+.default .sort-DESC::after, .default .sort-ASC::after {
+  margin-left: 2px;
+  font-size: 1.1em;
+  color: black;
+}
+
+.default .sort-ASC, .default .sort-DESC {
+  background-color: #dddddd;
+}
+
+.default .sort-ASC::after {
+  content: '▲';
+}
+
+.default .sort-DESC::after {
+  content: '▼';
+}
+
+.default .selectedRow {
+  background-color: #dddddd;
+  transition: ease-in 0.25s;
+}
+
+.default tr:last-child td {
+  border: none;
+}
+
+.default td {
+  border-bottom: 1.5px solid #bdbdbd;
+  padding: 0.75em 1em;
+}
+/*# sourceMappingURL=default.css.map */

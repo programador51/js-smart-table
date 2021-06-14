@@ -1,8 +1,10 @@
 {
-    "plugins":[],
+    "plugins":[
+        "node_modules/better-docs/typescript"
+    ],
     "source":{
         "include":["src"],
-        "includePattern":".ts$",
+        "includePattern": "\\.(jsx|js|ts|tsx)$",
         "excludePattern":"(node_modules|public)"
     },
     "templates":{
@@ -12,6 +14,9 @@
     "opts":{
         "recurse":"true",
         "destination":"./documentation",
-        "template":"node_modules/docdash"
+        "template":"node_modules/better-docs"
+    },
+    "tags":{
+        "allowUnknownTags": ["optional"]
     }
 }

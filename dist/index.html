@@ -5,31 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
     <title>js-smart-table</title>
   </head>
   <body>
-
     <select name="hour" id="hourAssignature">
       <option value="5">> 5</option>
       <option value="10">> 10</option>
       <option value="15">> 15</option>
     </select>
-    
-    <table id="users-info" class="align-table"></table>
-    <div id="pagination-users-info"></div>
 
-    <div class="informationUser">
-      <h1>Information of the user</h1>
-      <ul>
-        <li id="name"></li>
-        <li id="email"></li>
-        <li id="id"></li>
-      </ul>
+    <div class="">
+      <div class="w-100">
+        <table id="users-info"></table>
+        <div id="pagination-users-info" class="default-pagination">
+        </div>
+      </div>
 
-      <img id="profile-picture" src="" alt="profile-picture" />
+      <div class="w-100 informationClass">
+        <img
+          class="img-fluid"
+          src="http://logistica.fime.uanl.mx/img/logo-fime.gif"
+          alt="logo-fime"
+        />
+
+        <ul>
+          <li id="name"></li>
+          <li id="email"></li>
+          <li id="id"></li>
+        </ul>
+      </div>
     </div>
-
-    
   </body>
   <script src="bundle.js"></script>
 </html>

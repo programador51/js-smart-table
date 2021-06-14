@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> index.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,43 +75,55 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>index.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><p>This library allows you to</p>
-<ul>
-<li>Print some data in a table with JS Code</li>
-<li>Paginate the data</li>
-<li>Click the rows and save the info reference in the JS code that wii allow you
-do some actions and operate with that information as reference.</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { getAssignatures } from './helpers/api';
+
+import { APIConfig } from './types';
+
+/**
+ * Creates a table with information fetched from somewhere. This can be paginated, referenced, sortable by the API (if the API allows it) and sortable by the registeres fetched on that page (local sort client-side)
+ * @class
+ */
+class APITable{
+
+    /**
+    * @type {APIConfig}
+    */
+    protected tableConfiguration:APIConfig;
+
+    constructor(tableConfiguration:APIConfig){
+        this.tableConfiguration = tableConfiguration;
+    }
+
+    view(){
+        console.log(this.tableConfiguration);
+    }
+}
+
+const configuration = {
+    idTable:'users-info',
+    idPagination:'pagination-users-info',
+    urlParams:'&amp;hora=5'
+}
+
+let Users;
+
+async function initialLoad(){
+    const assignatures = await getAssignatures(1,'ASC','idAssignature','&amp;hora=5');
+    Users = new APITable(configuration);
+    Users.view();
+}</code></pre>
+        </article>
     </section>
-
-
 
 
 

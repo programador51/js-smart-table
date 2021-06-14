@@ -1,0 +1,48 @@
+.default-pagination{
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.default-pagination{
+    div:first-child{
+        display: flex;
+        align-items: center;
+    }
+}
+
+.default-pagination{
+    div:last-child{
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        div{
+            padding:10px;
+            cursor:pointer;
+            &:hover{
+                background-color: #dbdbdb;
+                transition: ease-in-out 0.25s;
+            }
+        }
+        div:nth-child(3){
+            background-color: #fff;
+            cursor:default;
+        }  
+    }
+}
+
+.default-pagination {
+
+    input[type=number]{
+        padding:5px 10px;
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
+}

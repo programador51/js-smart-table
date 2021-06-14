@@ -1,0 +1,46 @@
+.default{
+    font-size: 0.5em;
+    border-collapse: collapse;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    margin: auto;
+
+    tr, th{
+        padding:10px 10px;
+        transition: ease-in 0.25s;
+    }
+
+    .sort-DESC::after, .sort-ASC::after{
+        margin-left: 2px;
+        font-size: 1.1em;
+        color:rgb(0, 0, 0);
+    }
+
+    .sort-ASC,.sort-DESC{
+        background-color: #dddddd;
+    }
+
+    .sort-ASC::after{
+        content: '▲';
+    }
+    
+    .sort-DESC::after{
+        content: '▼';
+    }
+
+    .selectedRow{
+        background-color: #dddddd;
+        transition: ease-in 0.25s;
+    }
+
+    tr:last-child td{
+        border:none;
+    }
+
+    td {
+        border-bottom: 1.5px solid #bdbdbd;
+        padding:0.75em 1em;
+    }
+}
+
+@import './pagination.scss';
