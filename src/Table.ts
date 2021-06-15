@@ -1,91 +1,4 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> pages.ts</title>
-
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
-  <link type="text/css" rel="stylesheet" href="">
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-  
-</head>
-
-
-
-<body class="layout small-header">
-    <div id="stickyNavbarOverlay"></div>
-    
-
-<div class="top-nav">
-    <div class="inner">
-        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-        <div class="logo">
-            
-            
-        </div>
-        <div class="menu">
-            
-            <div class="navigation">
-                <a
-                    href="index.html"
-                    class="link"
-                >
-                    API Documentation
-                </a>
-                
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-    <div id="main">
-        <div
-            class="sidebar "
-            id="sidebarNav"
-        >
-            
-            <nav>
-                
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Table.html">Table</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cbSelection">cbSelection</a></li><li><a href="global.html#paginationFn">paginationFn</a></li></ul></div>
-                
-            </nav>
-        </div>
-        <div class="core" id="main-content-wrapper">
-            <div class="content">
-                <header class="page-title">
-                    <p>Source</p>
-                    <h1>pages.ts</h1>
-                </header>
-                
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import { HeadersConfig,APIConfig } from './types';
+import { HeadersConfig,APIConfig } from './types';
 
 /**
  * Table
@@ -125,7 +38,7 @@ class Table{
 
                 this.quitHover();
 
-                const element = (&lt;HTMLInputElement>e.target).parentNode as HTMLInputElement;
+                const element = (<HTMLInputElement>e.target).parentNode as HTMLInputElement;
                 this.htmlIdselectedRow = element.id;
                 
                 this.setHover();
@@ -167,7 +80,7 @@ class Table{
 
             params.map((param:any)=>{
 
-                const query = `&amp;${param}`;
+                const query = `&${param}`;
                 const queryValue = this.tableConfiguration.urlParams[param];
 
                 stringURLParams+=`${query}=${queryValue}`;
@@ -192,10 +105,10 @@ class Table{
     }
 
     generateBody() {
-        this.tableContent += `&lt;tbody>`;
-        this.tableContent += `&lt;tr 
+        this.tableContent += `<tbody>`;
+        this.tableContent += `<tr 
         class="selectedRow" 
-        id="${this.tableConfiguration.idTable}-programador51">&lt;/tr>`;
+        id="${this.tableConfiguration.idTable}-programador51"></tr>`;
 
         this.tableConfiguration.rows.map((data: any) => {
 
@@ -205,7 +118,7 @@ class Table{
                 idRow += `-${data[this.tableConfiguration.idRows]}`;
             }
 
-            let tr = `&lt;tr id="${idRow}">`;
+            let tr = `<tr id="${idRow}">`;
 
             this.tableConfiguration.headerConfig.map((info: HeadersConfig,i) => {
                 let aditionalCSS = '';
@@ -214,10 +127,10 @@ class Table{
                     aditionalCSS = info.css;
                 }
 
-                tr += `&lt;td class="${aditionalCSS}">${data[info.attributeToPrint]}&lt;/td>`;
+                tr += `<td class="${aditionalCSS}">${data[info.attributeToPrint]}</td>`;
             });
 
-            tr += `&lt;/tr>`;
+            tr += `</tr>`;
             this.tableContent += tr;
 
         })
@@ -236,7 +149,7 @@ class Table{
             th.forEach(header=>{
                 header.addEventListener('click',async(e)=>{
 
-                    const target = (&lt;HTMLInputElement>e.target).id;
+                    const target = (<HTMLInputElement>e.target).id;
 
                     this.tableConfiguration.headerConfig.map(element=>{
                         element.sortThis = false;
@@ -290,7 +203,7 @@ class Table{
     }
 
     generateHeader() {
-        let header = `&lt;thead>&lt;tr>`;
+        let header = `<thead><tr>`;
 
         this.tableConfiguration.headerConfig.map((element: HeadersConfig) => {
 
@@ -311,13 +224,13 @@ class Table{
                 element.css = '';
             }
 
-            let th = `&lt;th id="header-${element.columnNameDB}" 
+            let th = `<th id="header-${element.columnNameDB}" 
         class="${element.css} ${element.sortThis === true ? `${cssSort}` : ''}" 
-        scope="col">${element.text}&lt;/th>`;
+        scope="col">${element.text}</th>`;
             header += th;
         });
 
-        header += `&lt;/tr>&lt;/thead>`;
+        header += `</tr></thead>`;
         this.tableContent += header;
     }
 
@@ -328,32 +241,4 @@ class Table{
     }
 }
 
-export default Table;</code></pre>
-        </article>
-    </section>
-
-
-
-
-            </div>
-            
-            <footer class="footer">
-                <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
-                    <p class="sidebar-created-by">
-                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
-                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
-                    </p>
-                </div>
-            </footer>
-            
-        </div>
-        <div id="side-nav" class="side-nav">
-        </div>
-    </div>
-<script src="scripts/app.min.js"></script>
-<script>PR.prettyPrint();</script>
-<script src="scripts/linenumber.js"> </script>
-
-</body>
-</html>
+export default Table;

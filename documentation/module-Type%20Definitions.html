@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> helpers/api.ts</title>
+  <title> Type Definitions</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,67 +66,60 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Table.html">Table</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cbSelection">cbSelection</a></li><li><a href="global.html#paginationFn">paginationFn</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-Type%2520Definitions.html">Type Definitions</a></li></ul><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>helpers/api.ts</h1>
+                    <p>Module</p>
+                    <h1>Type Definitions</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// Just for testing purposes
-
-/**
- * How must looks like the functions that fetchs data from the API
- * 
- * @async
- * @function paginationFn
- * @param {number} page - The page requested of the information
- * @param {string} order - ASC or DESC the data
- * @param {string} columnOrdering - Which column it's gonna be counted for the sorting (must match with the column table of the table on DB)
- * @param {string|undefined} additionalQuery - In case you want set more url params, you need to pass the array
- * @returns {object} 
- */
-export async function getAssignatures(page:number=1,order:string="ASC",columnOrdering:string,additionalQuery?:string){
-    let query;
-
-    if(additionalQuery===undefined){
-        query = await fetch(`http://localhost:4000/api/paso1/materias?pagina=${page}&amp;orden=${order}&amp;columna=${columnOrdering}`);
-    }
-
-    else{
-        query = await fetch(`http://localhost:4000/api/paso1/materias?pagina=${page}&amp;orden=${order}&amp;columna=${columnOrdering}${additionalQuery}`);
-    }
-
-    const assignatures = await query.json();
-
-    return assignatures.data;
-}
-
-
-/**
- * How must look the function for the property cbSelection
- * @function cbSelection
- * @param {Event} e - Event for the clicked row.
- */
-function printAssignature(e:Event){
-    console.log(Users.infoRow);
+        
     
-    document.getElementById('plan')!.innerText = Users.infoRow.plan;
-    document.getElementById('materia')!.innerText = Users.infoRow.nombreMateria;
-    document.getElementById('salon')!.innerText = Users.infoRow.salon;
-}</code></pre>
-        </article>
-    </section>
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

@@ -1,5 +1,31 @@
 /**
  * Configuration that must receive "APITable" in order to work
+ * @example
+ * const configuration: APIConfig = {
+        idTable: 'users-info',
+        idPagination: 'pagination-users-info',
+        urlParams:'&hora=4&materia=1',
+        pages: 10,
+        actualPage: 2,
+        rows: [{...},{...},{...}],
+        headerConfig: [
+        { text: 'Materia', columnNameDB: 'nombreMateria', idHeader: 'nameAssignature', attributeToPrint: 'nombreMateria', sortable: true, sortThis: true },
+        { text: 'Salon', columnNameDB: 'salon', idHeader: 'assignatureRoom', attributeToPrint: 'salon', sortable: true }
+        ],
+        styleTable: 'default',
+        sort : {
+            sqlSort: true,
+            sortASC: true   
+        },
+        idRows: 'idAssignature',
+        cbSelection,
+        paginationFn,
+        attributesResponse:{
+            actualPage:'actualPage',
+            pages:'pages',
+            data:'assignatures'
+        }
+    }
 */
 export type APIConfig = {
     /**
@@ -70,13 +96,24 @@ export type APIConfig = {
       */
      paginationFn:(page:number,order:string,column:string,urlQuery?:string)=>object,
 
+     /**
+      * Name of the attributes that contains the data fetched
+      */
      attributesResponse:AttributesResponse,
 
+     /**
+      * Actually, you dont't need to touch it or add it. It's just in order to work
+      */
      stringQuery?:string
 }
 
 /**
  * Configuration to set properyly the header of the printed table
+ * @example 
+ * const header = [
+    { text: 'Materia', columnNameDB: 'nombreMateria', idHeader: 'nameAssignature', attributeToPrint: 'nombreMateria', sortable: true, sortThis: true },
+    { text: 'Salon', columnNameDB: 'salon', idHeader: 'assignatureRoom', attributeToPrint: 'salon', sortable: true }
+    ]
  */
 export type HeadersConfig = {
     /**
@@ -117,6 +154,14 @@ export type HeadersConfig = {
     sortThis?:boolean
 }
 
+/**
+ * The table can be sort, we need to know how will be the sort
+ * @example 
+ * const sort: Sort = {
+        sqlSort: true,
+        sortASC: true
+    }
+ */
 export type Sort = {
 
     /**
@@ -149,6 +194,15 @@ export type infoPagination = {
     noPages:number
 }
 
+/**
+ * When the data it's fetched, we need to know which one correspond to match the data with the library
+ * @example
+ * const attributes:AttributesResponse = {
+        actualPage:'actualPage',
+        pages:'pages',
+        data:'assignatures'
+    }
+ */
 export type AttributesResponse = {
 
     /**

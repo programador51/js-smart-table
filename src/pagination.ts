@@ -1,5 +1,5 @@
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import Table from './pages';
+import Table from './Table';
 import { HeadersConfig, APIConfig } from './types';
 
 import {
@@ -24,9 +24,9 @@ dom.watch();
 
 export class DefaultTable extends Table {
 
-    protected paginationHTML = '';
-    protected sortWay = '';
-    protected columnOrdering = '';
+    public paginationHTML = '';
+    public sortWay = '';
+    public columnOrdering = '';
 
     constructor(tableConfiguration: APIConfig) {
         super(tableConfiguration);
@@ -77,6 +77,34 @@ export class DefaultTable extends Table {
         const data:any = await this.tableConfiguration.paginationFn(page,this.sortWay,this.tableConfiguration.sort.sortingColumn!);
                 
         this.updateInformation(data[atrActualPage],data[atrPages],data[atrData]);
+    }
+
+    sortingWay(){
+        if(this.tableConfiguration.sort.sortASC===true){
+            return 'ASC';
+        }else{
+            return 'DESC';
+        }
+    }
+
+    async setURLQuerys(values:object){
+        this.tableConfiguration.urlParams = values;
+
+        const sort = this.sortingWay();
+        const column = this.tableConfiguration.sort.sortingColumn!;
+
+        this.getURLQuery();
+
+        const data = await this.tableConfiguration.paginationFn(1,sort,column,this.tableConfiguration.urlParams);
+
+        console.log('data',data);
+        this.tableConfiguration.rows = data[this.tableConfiguration.attributesResponse.data];
+        this.tableConfiguration.pages = data[this.tableConfiguration.attributesResponse.pages];
+        this.tableConfiguration.actualPage = 1
+        
+
+        this.printTable();
+        this.printPagination();
     }
 
 

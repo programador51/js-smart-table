@@ -16,7 +16,9 @@
   </head>
   <body>
 
-    <div class="filtros d-flex justify-content-start">
+    <h1 class="text-center">Demo</h1>
+
+    <form id="filtro" class="filtros d-flex justify-content-start mb-4">
       <div>
         <label for="horaFiltro">Hora</label>
           <select id="horaFiltro" name="horaFiltro">
@@ -50,14 +52,20 @@
             <option value="401">401</option>
           </select>
       </div>
-    </div>
+
+      <div>
+        <label class="d-block" for="materiaBusqueda">Materia</label>
+        <input type="text" id="materiaBusqueda" name="materiaBusqueda" placeholder="Escribe aqui">
+      </div>
+
+      <input type="submit" value="Buscar">
+    </form>
     
 
     <div class="d-flex justify-content-around">
       <div class="w-50">
         <table id="users-info"></table>
-        <div id="pagination-users-info" class="default-pagination">
-        </div>
+        <div id="pagination-users-info" class="default-pagination"></div>
       </div>
 
       <div class="w-50 informationClass">

@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getAssignatures">getAssignatures</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Table.html">Table</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cbSelection">cbSelection</a></li><li><a href="global.html#paginationFn">paginationFn</a></li></ul></div>
                 
             </nav>
         </div>
@@ -150,27 +150,92 @@
     
 
     
+
+    
         <div class='vertical-section'>
-            <h1>Members</h1>
+            <h1>Methods</h1>
             <div class="members">
             
                 <div class="member">
 
-<h4 class="name" id="getAssignatures">
-    <a class="href-link" href="#getAssignatures">#</a>
+
     
+    <h4 class="name" id="cbSelection">
+        <a class="href-link" href="#cbSelection">#</a>
         
-            <span class='tag'>constant</span>
+        <span class="code-name">
+            
+                cbSelection<span class="signature">(e)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        How must look the function for the property cbSelection
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
         
-    
-    <span class="code-name">
-        getAssignatures
-    </span>
-    
-</h4>
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>e</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Event</span>
 
 
+  
+  </td>
 
+  
+
+  
+
+  <td class="description last">Event for the clicked row.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -211,7 +276,7 @@
         <p class="tag-source">
             <a href="helpers_api.ts.html" class="button">View Source</a>
             <span>
-                <a href="helpers_api.ts.html">helpers/api.ts</a>, <a href="helpers_api.ts.html#line9">line 9</a>
+                <a href="helpers_api.ts.html">helpers/api.ts</a>, <a href="helpers_api.ts.html#line25">line 25</a>
             </span>
         </p>
     
@@ -221,12 +286,279 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="paginationFn">
+        <a class="href-link" href="#paginationFn">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                paginationFn<span class="signature">(page, order, columnOrdering, additionalQuery)</span><span class="type-signature"> &rarr; {object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        How must looks like the functions that fetchs data from the API
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>page</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The page requested of the information</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>order</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">ASC or DESC the data</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>columnOrdering</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Which column it's gonna be counted for the sorting (must match with the column table of the table on DB)</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>additionalQuery</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">In case you want set more url params, you need to pass the array</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_api.ts.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_api.ts.html">helpers/api.ts</a>, <a href="helpers_api.ts.html#line3">line 3</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
 </div>
             
             </div>
         </div>
-    
-
     
 
     
@@ -628,7 +960,7 @@ of the fetched data. So, the string must match with the response of the resource
     <td class="type">
     
         
-<span class="param-type">Sort</span>
+<span class="param-type"><a href="global.html#Sort">Sort</a></span>
 
 
     
@@ -686,7 +1018,7 @@ of the fetched data. So, the string must match with the response of the resource
     <td class="type">
     
         
-<span class="param-type">AttributesResponse</span>
+<span class="param-type"><a href="global.html#AttributesResponse">AttributesResponse</a></span>
 
 
     
@@ -702,7 +1034,7 @@ of the fetched data. So, the string must match with the response of the resource
 
     
 
-    <td class="description last"></td>
+    <td class="description last">Name of the attributes that contains the data fetched</td>
 </tr>
 
         
@@ -733,7 +1065,7 @@ of the fetched data. So, the string must match with the response of the resource
 
     
 
-    <td class="description last"></td>
+    <td class="description last">Actually, you dont't need to touch it or add it. It's just in order to work</td>
 </tr>
 
         
@@ -786,6 +1118,225 @@ of the fetched data. So, the string must match with the response of the resource
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const configuration: APIConfig = {
+        idTable: 'users-info',
+        idPagination: 'pagination-users-info',
+        urlParams:'&amp;hora=4&amp;materia=1',
+        pages: 10,
+        actualPage: 2,
+        rows: [{...},{...},{...}],
+        headerConfig: [
+        { text: 'Materia', columnNameDB: 'nombreMateria', idHeader: 'nameAssignature', attributeToPrint: 'nombreMateria', sortable: true, sortThis: true },
+        { text: 'Salon', columnNameDB: 'salon', idHeader: 'assignatureRoom', attributeToPrint: 'salon', sortable: true }
+        ],
+        styleTable: 'default',
+        sort : {
+            sqlSort: true,
+            sortASC: true   
+        },
+        idRows: 'idAssignature',
+        cbSelection,
+        paginationFn,
+        attributesResponse:{
+            actualPage:'actualPage',
+            pages:'pages',
+            data:'assignatures'
+        }
+    }</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="AttributesResponse">
+    <a class="href-link" href="#AttributesResponse">#</a>
+    
+    <span class="code-name">
+        AttributesResponse
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    When the data it's fetched, we need to know which one correspond to match the data with the library
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>pages</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">When the information respons the JSON, it's necessary know the name of the attribute that contains the,
+number of pages</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>actualPage</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">When the information respons the JSON, it's necessary know the name of the attribute,
+that contain the actualPage</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>data</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">When the data comes, in which attribute it's that Array<object></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="types.d.ts.html" class="button">View Source</a>
+            <span>
+                <a href="types.d.ts.html">types.d.ts</a>, <a href="types.d.ts.html#line89">line 89</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const attributes:AttributesResponse = {
+        actualPage:'actualPage',
+        pages:'pages',
+        data:'assignatures'
+    }</code></pre>
+    
 
 
 </div>
@@ -1097,7 +1648,7 @@ a bold font, an specific color, an aligment, etc.</td>
         <p class="tag-source">
             <a href="types.d.ts.html" class="button">View Source</a>
             <span>
-                <a href="types.d.ts.html">types.d.ts</a>, <a href="types.d.ts.html#line28">line 28</a>
+                <a href="types.d.ts.html">types.d.ts</a>, <a href="types.d.ts.html#line54">line 54</a>
             </span>
         </p>
     
@@ -1105,6 +1656,224 @@ a bold font, an specific color, an aligment, etc.</td>
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const header = [
+    { text: 'Materia', columnNameDB: 'nombreMateria', idHeader: 'nameAssignature', attributeToPrint: 'nombreMateria', sortable: true, sortThis: true },
+    { text: 'Salon', columnNameDB: 'salon', idHeader: 'assignatureRoom', attributeToPrint: 'salon', sortable: true }
+    ]</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="Sort">
+    <a class="href-link" href="#Sort">#</a>
+    
+    <span class="code-name">
+        Sort
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    The table can be sort, we need to know how will be the sort
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sqlSort</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">If true, the code will fetch the actual page to the DB, but sending the params of sorting.,
+If false, the data will be sorted on the client side</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sortASC</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">true for ASC and false for DESC</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sortingColumn</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">No need to touch, just to ensure the library works</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="types.d.ts.html" class="button">View Source</a>
+            <span>
+                <a href="types.d.ts.html">types.d.ts</a>, <a href="types.d.ts.html#line74">line 74</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const sort: Sort = {
+        sqlSort: true,
+        sortASC: true
+    }</code></pre>
+    
 
 
 </div>

@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getAssignatures">getAssignatures</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Table.html">Table</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cbSelection">cbSelection</a></li><li><a href="global.html#paginationFn">paginationFn</a></li></ul></div>
                 
             </nav>
         </div>
@@ -100,13 +100,266 @@
 
 
     <section>
-        <article><p>This library allows you to</p>
+        <article><p>js-smart-table allows you</p>
 <ul>
-<li>Print some data in a table with JS Code</li>
-<li>Paginate the data</li>
-<li>Click the rows and save the info reference in the JS code that wii allow you
-do some actions and operate with that information as reference.</li>
-</ul></article>
+<li>Tabulate data</li>
+<li>Paginate</li>
+<li>Sort
+<ul>
+<li>API Sort (if the API allows it)</li>
+<li>Client side <strong>TO BE RELEASED</strong></li>
+</ul>
+</li>
+<li>Do a &quot;reference&quot; to an specific row.</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dmtvwe2ur/image/upload/v1623768202/js-smart-table/smart-table_okaib2.gif" alt="video-demo"></p>
+<p>To use this, it's just that simple doing an instance and passing an object as argument to set
+the configuration of the table. But fisrt, some information.</p>
+<hr>
+<h2>Tabulate data</h2>
+<p>This library will have many 'themes' to display the data.
+For now, this is the list of themes available for Tabulate data</p>
+<ul>
+<li>default</li>
+</ul>
+<hr>
+<h2>Paginate</h2>
+<p>Also, you can add pagination to avoid full the screen with innecesary data
+For now, this is the list of themes available for Paginate</p>
+<ul>
+<li>default</li>
+</ul>
+<hr>
+<h2>Sort</h2>
+<p>There 2 ways to sort the data on the table.</p>
+<h3>sort-client-side (to be released)</h3>
+<p>This order the data acording to the clicked column. But will order just the &quot;x&quot; data that was fetched from the source.</p>
+<p>For instance.
+You requested &quot;users&quot; from an API, that returned you the first 30 registers, well, the library will sort just that 30 registers.
+This sort it's good when the SQL Gestor of the API doesn't implements sorting according to the parameters that receives by the http methods.</p>
+<p>In resumen, use this one in case the API can't sort the data by himself</p>
+<h3>sort-sql-side</h3>
+<p>The sort it's done by the API. So, the code just calls the API passing the arguments by URL Params.</p>
+<p>In resumen, use this one in case you know the configuration that we will need on the section &quot;How to use&quot; for this sort way.</p>
+<hr>
+<h2>Do a &quot;reference&quot; to an specific row.</h2>
+<p>When you click a row, you &quot;save&quot; the data on the instance of the table. So you can open a form and fill the inputs with that data or do whatever you want. You can do actions doing reference to that data.</p>
+<hr>
+<h2>HOW TO USE</h2>
+<p>In order this works fine, need to pass an object as argument to the instance of the theme table we want to
+use. Let's get started.</p>
+<p>First, <strong>check</strong> the type definition of <strong>APIConfig</strong>.</p>
+<h1>Example configuration</h1>
+<pre class="prettyprint source lang-typescript"><code>
+const configuration: APIConfig = {
+        idTable: 'users-info',
+        idPagination: 'pagination-users-info',
+        urlParams,
+        pages: assignatures.pages,
+        actualPage: assignatures.actualPage,
+        rows: assignatures.assignatures,
+        headerConfig: header,
+        styleTable: 'default',
+        sort,
+        idRows: 'idAssignature',
+        cbSelection,
+        paginationFn,
+        attributesResponse
+    }
+
+</code></pre>
+<p>Let's checkout out one by one.</p>
+<hr>
+<ol>
+<li>
+<h5>idTable:string</h5>
+</li>
+</ol>
+<p>You need to create a <code>table</code> tag and add the id attribute (value doesn't matter)</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-html"><code>&lt;table id=&quot;users-info&quot;>&lt;/table>
+</code></pre>
+<p>This attribute must match with that one of the html file.</p>
+<pre class="prettyprint source lang-typescript"><code>
+const configuration: APIConfig = {
+        idTable: 'users-info',
+        ...
+    }
+
+</code></pre>
+<hr>
+<ol start="2">
+<li>
+<h5>idPagination:string</h5>
+</li>
+</ol>
+<p>You need to create a <code>div</code> tag with an id attibute (value doesn't matter)</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-html"><code>&lt;div id=&quot;pagination-users-info&quot; class=&quot;default-pagination&quot;>&lt;/div>
+</code></pre>
+<p>This attribute must match with that one of the html file.</p>
+<pre class="prettyprint source lang-typescript"><code>
+const configuration: APIConfig = {
+        idPagination: 'pagination-users-info',
+        ...
+    }
+
+</code></pre>
+<hr>
+<ol start="3">
+<li>
+<h5>urlParams?:string</h5>
+</li>
+</ol>
+<p>In case you want to add custom url params, you can do it. This it's fine when you wanna filter data</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-typescript"><code>
+const configuration: APIConfig = {
+        urlParams: '&hora=2&plan=401',
+        ...
+    }
+
+</code></pre>
+<ol start="4">
+<li>
+<h5>pages:number</h5>
+</li>
+</ol>
+<p>The api must respons with the number of pages for the amount of data to be able create the pagination</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-typescript"><code>
+const configuration: APIConfig = {
+        pages: 20,
+        ...
+    }
+
+</code></pre>
+<hr>
+<ol start="5">
+<li>
+<h5>actualPage:number</h5>
+</li>
+</ol>
+<p>The api must respons which page correspons the fetched data.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-typescript"><code>
+const configuration: APIConfig = {
+        actualPage: 13,
+        ...
+    }
+
+</code></pre>
+<hr>
+<ol start="6">
+<li>
+<h5>rows:Array[object]</h5>
+</li>
+</ol>
+<p>The api must has an attribute that contains a JSON with the fetched data</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-typescript"><code>
+const configuration: APIConfig = {
+        rows: [
+        {
+            &quot;id&quot;: 7,
+            &quot;email&quot;: &quot;michael.lawson@reqres.in&quot;,
+            &quot;first_name&quot;: &quot;Michael&quot;,
+            &quot;last_name&quot;: &quot;Lawson&quot;,
+            &quot;avatar&quot;: &quot;https://reqres.in/img/faces/7-image.jpg&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;email&quot;: &quot;lindsay.ferguson@reqres.in&quot;,
+            &quot;first_name&quot;: &quot;Lindsay&quot;,
+            &quot;last_name&quot;: &quot;Ferguson&quot;,
+            &quot;avatar&quot;: &quot;https://reqres.in/img/faces/8-image.jpg&quot;
+        },
+        ...
+    ]
+        ...
+    }
+
+</code></pre>
+<hr>
+<ol start="7">
+<li>
+<h5>headerConfig:HeaderConfig</h5>
+</li>
+</ol>
+<p>Please, <strong>check</strong> the type definition of <strong>HeaderConfig</strong> for more information. (Global &gt; Right Side)</p>
+<hr>
+<ol start="8">
+<li>
+<h5>style:string</h5>
+</li>
+</ol>
+<p>The theme that gonna have the table</p>
+<p><strong>Valid values</strong></p>
+<ul>
+<li>'default'</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-typescript"><code>
+const configuration: APIConfig = {
+        styleTable: 'default',
+        ...
+    }
+
+</code></pre>
+<hr>
+<ol start="9">
+<li>
+<h5>headerConfig:HeaderConfig</h5>
+</li>
+</ol>
+<p>Please, <strong>check</strong> the type definition of <strong>Sort</strong> for more information. (Global &gt; Right Side)</p>
+<hr>
+<ol start="10">
+<li>
+<h5>idRows:string</h5>
+</li>
+</ol>
+<p>When the table is printed, the <code>tr</code> can have an id attibute.
+Which value must be set here? One of the attribute name that you get from the response. For example.</p>
+<p>If your JSON response looks like this.</p>
+<pre class="prettyprint source lang-javascript"><code>{
+    &quot;id&quot;: 8,
+    &quot;email&quot;: &quot;lindsay.ferguson@reqres.in&quot;,
+    &quot;first_name&quot;: &quot;Lindsay&quot;,
+    &quot;last_name&quot;: &quot;Ferguson&quot;,
+    &quot;avatar&quot;: &quot;https://reqres.in/img/faces/8-image.jpg&quot;
+}
+</code></pre>
+<p>You can put on this attribute the values of</p>
+<ul>
+<li>id</li>
+<li>email</li>
+<li>first_name</li>
+<li>last_name</li>
+<li>avatar</li>
+</ul>
+<hr>
+<ol start="11">
+<li>
+<h5>cbSelection</h5>
+</li>
+</ol>
+<p>Please, <strong>check</strong> the method of <strong>cbSelection</strong> for more information. (Global &gt; cbSelection)</p>
+<hr>
+<ol start="12">
+<li>
+<h5>paginationFn</h5>
+</li>
+</ol>
+<p>Please, <strong>check</strong> the method of <strong>paginationFn</strong> for more information. (Global &gt; paginationFn)</p>
+<hr>
+<ol start="13">
+<li>
+<h3>attributesResponse</h3>
+</li>
+</ol>
+<p>Please, <strong>check</strong> the type definition of <strong>attributesResponse</strong> for more information. (Global &gt; Right Side)</p>
+<hr></article>
     </section>
 
 
