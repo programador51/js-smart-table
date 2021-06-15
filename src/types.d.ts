@@ -1,28 +1,3 @@
-// export type HeaderTable = {
-//     text:string,
-//     columnNameDB:string,
-//     idHeader:string,
-//     css?:string,
-// }
-
-// export type RowConfig = {
-//     idRow:string,
-//     columnsCSS:Array<string>,
-//     attributesToPrint:Array<string>
-// }
-
-// export type AttributesAPI = {
-//     pages:string,
-//     actualPage:string,
-//     rows:string
-// }
-
-// export type Sort = {
-//     column:string,
-//     order:string,
-    
-// }
-
 /**
  * Configuration that must receive "APITable" in order to work
 */
@@ -38,9 +13,9 @@ export type APIConfig = {
     idPagination:string,
 
     /**
-     * URL Params in case that the API need it's for do an OK query of the requested data
+     * Each attribute will be the name of the query param and his value, well, his value.
      */
-    urlParams?:string,
+    urlParams?:object,
 
     /**
      * Number of pages that has the fetched data
@@ -93,7 +68,11 @@ export type APIConfig = {
      /**
       * This function will be use to fetch data through the buttons of navagition, and, if the API allows it, to order the data by columns in ASC or DESC
       */
-     fetchFn:(page:number,order:string,column:string,urlQuery?:string)=>object
+     paginationFn:(page:number,order:string,column:string,urlQuery?:string)=>object,
+
+     attributesResponse:AttributesResponse,
+
+     stringQuery?:string
 }
 
 /**
@@ -141,15 +120,21 @@ export type HeadersConfig = {
 export type Sort = {
 
     /**
-     * Indicate the sort it's gonna be made by the browsers of the sql motor that provides the data
+     * If true, the code will fetch the actual page to the DB, but sending the params of sorting.
+     * If false, the data will be sorted on the client side
      */
 
-    sideSort:string,
+    sqlSort:boolean,
 
     /**
      * true for ASC and false for DESC
      */
-    sortASC:boolean
+    sortASC:boolean,
+
+    /**
+     * No need to touch, just to ensure the library works
+     */
+    sortingColumn?:string
 }
 
 export type infoPagination = {
@@ -162,4 +147,25 @@ export type infoPagination = {
      * Number of pages that contain the table
      */
     noPages:number
+}
+
+export type AttributesResponse = {
+
+    /**
+     * When the information respons the JSON, it's necessary know the name of the attribute that contains the
+     * number of pages
+     */
+    pages:string,
+
+    /**
+     * When the information respons the JSON, it's necessary know the name of the attribute
+     * that contain the actualPage
+     */
+    actualPage:string,
+
+
+    /**
+     * When the data comes, in which attribute it's that Array<object>
+     */
+    data:string
 }

@@ -9,18 +9,19 @@ export const getAssignatures = async(page:number=1,order:string="ASC",columnOrde
     let query;
 
     if(additionalQuery===undefined){
-        console.log(`No aditional query`);
+        // console.log(`No aditional query`);
         query = await fetch(`http://localhost:4000/api/paso1/materias?pagina=${page}&orden=${order}&columna=${columnOrdering}`);
     }
 
     else{
-        console.log(`Aditional query`);
+        // console.log(`Aditional query`);
         query = await fetch(`http://localhost:4000/api/paso1/materias?pagina=${page}&orden=${order}&columna=${columnOrdering}${additionalQuery}`);
     }
 
+    
     const assignatures = await query.json();
-
-    // console.log(assignatures.data);
+    
+    // console.log(assignatures);
 
     return assignatures.data;
 }

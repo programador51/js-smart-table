@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="APITable.html">APITable</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getAssignatures">getAssignatures</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getAssignatures">getAssignatures</a></li></ul></div>
                 
             </nav>
         </div>
@@ -85,32 +85,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// export type HeaderTable = {
-//     text:string,
-//     columnNameDB:string,
-//     idHeader:string,
-//     css?:string,
-// }
-
-// export type RowConfig = {
-//     idRow:string,
-//     columnsCSS:Array&lt;string>,
-//     attributesToPrint:Array&lt;string>
-// }
-
-// export type AttributesAPI = {
-//     pages:string,
-//     actualPage:string,
-//     rows:string
-// }
-
-// export type Sort = {
-//     column:string,
-//     order:string,
-    
-// }
-
-/**
+            <pre class="prettyprint source linenums"><code>/**
  * Configuration that must receive "APITable" in order to work
 */
 export type APIConfig = {
@@ -125,9 +100,9 @@ export type APIConfig = {
     idPagination:string,
 
     /**
-     * URL Params in case that the API need it's for do an OK query of the requested data
+     * Each attribute will be the name of the query param and his value, well, his value.
      */
-    urlParams?:string,
+    urlParams?:object,
 
     /**
      * Number of pages that has the fetched data
@@ -158,7 +133,7 @@ export type APIConfig = {
      /**
       * A function that you can pass as argument to something after you click some row of the table
       */
-     cbSelection?:(data:object)=>void,
+     cbSelection?:(e:Event)=>void,
 
     /**
      * If your API use query params and this url params could be change because the user can filter the information or something.
@@ -170,7 +145,21 @@ export type APIConfig = {
       * The "tr" tags that will be build. Can have an "id" attribute. This id will be get from one of the attributes
       * of the fetched data. So, the string must match with the response of the resource data.
       */
-     idRows?:string
+     idRows:string,
+    
+     /**
+      * This will the manner of sorting the data in case the user press the column of the table
+      */
+     sort:Sort,
+     
+     /**
+      * This function will be use to fetch data through the buttons of navagition, and, if the API allows it, to order the data by columns in ASC or DESC
+      */
+     paginationFn:(page:number,order:string,column:string,urlQuery?:string)=>object,
+
+     attributesResponse:AttributesResponse,
+
+     stringQuery?:string
 }
 
 /**
@@ -202,12 +191,65 @@ export type HeadersConfig = {
      * The rows that will be printed can have your custom css classes in case you want add
      * a bold font, an specific color, an aligment, etc.
      */
-    css:string,
+    css?:string,
 
     /**
      * This will indicate if it's allowed to sort the column by ASC or DESC (independently if the class on the client-side or API)
      */
-    sortable:boolean
+    sortable:boolean,
+
+    /**
+     * This it's just to highlight on the html the actual sorting
+     */
+    sortThis?:boolean
+}
+
+export type Sort = {
+
+    /**
+     * If true, the code will fetch the actual page to the DB, but sending the params of sorting.
+     * If false, the data will be sorted on the client side
+     */
+
+    sqlSort:boolean,
+
+    /**
+     * true for ASC and false for DESC
+     */
+    sortASC:boolean
+}
+
+export type infoPagination = {
+    /**
+     * Actual page which it's the table
+     */
+    actualPage:number,
+
+    /**
+     * Number of pages that contain the table
+     */
+    noPages:number
+}
+
+export type AttributesResponse = {
+
+    /**
+     * When the information respons the JSON, it's necessary know the name of the attribute that contains the
+     * number of pages
+     */
+    pages:string,
+
+    /**
+     * When the information respons the JSON, it's necessary know the name of the attribute
+     * that contain the actualPage
+     */
+    actualPage:string,
+
+
+    /**
+     * When the data comes, in which attribute it's that Array&lt;object>
+     */
+    data:string
 }</code></pre>
         </article>
     </section>

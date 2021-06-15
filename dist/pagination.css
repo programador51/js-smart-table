@@ -1,7 +1,12 @@
+.default-pagination-search {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
 .default-pagination {
   display: flex;
   justify-content: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Century Gothic,Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .default-pagination div:first-child {
@@ -30,8 +35,13 @@
   cursor: default;
 }
 
-.default-pagination input[type=number] {
+.default-pagination input[type=number], .default-pagination .default-pagination-search {
   padding: 5px 10px;
+  border: 0.1875em solid #e5e5e5;
+  height: 3.125em;
+  color: #737373;
+  background-color: #f9f9f9;
+  border-radius: 0.3125em;
 }
 
 .default-pagination input[type=number]::-webkit-inner-spin-button,

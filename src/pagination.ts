@@ -1,120 +1,181 @@
-// import { library,dom } from '@fortawesome/fontawesome-svg-core';
-// import { infoPagination,APIConfig } from './types';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import Table from './pages';
+import { HeadersConfig, APIConfig } from './types';
 
-// import { faArrowRight,
-//     faArrowLeft,
-//     faAngleDoubleLeft,
-//     faAngleDoubleRight, 
-//     faExclamationCircle  }     
-// from '@fortawesome/free-solid-svg-icons';
+import {
+    faArrowRight,
+    faArrowLeft,
+    faAngleDoubleLeft,
+    faAngleDoubleRight,
+    faExclamationCircle,
+    faSearch
+}
+    from '@fortawesome/free-solid-svg-icons';
 
-// library.add(faArrowLeft,
-//     faAngleDoubleLeft,
-//     faArrowRight,
-//     faAngleDoubleRight,
-//     faExclamationCircle
-// );
+library.add(faArrowLeft,
+    faAngleDoubleLeft,
+    faArrowRight,
+    faAngleDoubleRight,
+    faExclamationCircle,
+    faSearch
+);
 
-// dom.watch();
-// export function generatePagination(tableConfig:APIConfig){
+dom.watch();
 
-//     let sort:string;
+export class DefaultTable extends Table {
 
-//     if(tableConfig.sort.sortASC === true){
-//         sort = 'ASC';
-//     }else{
-//         sort = 'DESC';
-//     }
+    protected paginationHTML = '';
+    protected sortWay = '';
+    protected columnOrdering = '';
 
-//     let columnOrdering = 'na';
+    constructor(tableConfiguration: APIConfig) {
+        super(tableConfiguration);
+        this.setColumnOrdering();
 
-//     tableConfig.headerConfig.map(header=>{
-        
-//         if(header.sortThis===true){
-//             columnOrdering = `${header.columnNameDB}`;
-//         }
-//     });
+    }
 
-//     if(tableConfig.styleTable===undefined) return;
+    setSort() {
+        if (this.tableConfiguration.sort.sortASC === true) {
+            this.sortWay = 'ASC';
+        } else {
+            this.sortWay = 'DESC';
+        }
+    }
 
-//     const infoPagination:infoPagination = {
-//         actualPage:tableConfig.actualPage,
-//         noPages:tableConfig.pages
-//     }
+    setColumnOrdering() {
+        this.tableConfiguration.headerConfig.map((element: HeadersConfig) => {
+            if (element.sortThis === true) {
+                this.columnOrdering = element.columnNameDB!;
+            }
 
-//     switch(tableConfig.styleTable){
-//         case 'default':
-//             const data = defaultPagination(tableConfig.idPagination,infoPagination,tableConfig.idTable,tableConfig,sort,columnOrdering);
+        });
 
-//         return data;
+    }
 
-//         default:
-//         return;
-//     }
+    async validateInput(input:any){
 
-// }
+        this.setSort();
 
-// function defaultPagination(id:string,info:infoPagination,idTable:string,tableConfig:APIConfig,sort:string,columnOrdering:string){
+        const atrActualPage = this.tableConfiguration.attributesResponse.actualPage;
+        const atrPages = this.tableConfiguration.attributesResponse.pages;
+        const atrData = this.tableConfiguration.attributesResponse.data;
 
-//     let data;
+        const page = parseInt(input,10);
 
-//     const paginationHTML = `<div class="w-50">
-//         <input id="searchPage-${idTable}" type="number" min="1" step="1" placeholder="Ir a pagina">
-//     </div>
-    
-//     <div id="pagination-${idTable}-buttons" class="w-50">
+        if(isNaN(page)){
+            return false;
+        }
 
-//     <div class="default-firstPage"><i class="fas fa-angle-double-left"></i></div>
-//     <div class="default-previousPage"><i class="fas fa-arrow-left"></i></div>
+        if(page>this.tableConfiguration.pages){
+            return false;
+        }
+
+        if(page===0) return false;
+
+
+
+        const data:any = await this.tableConfiguration.paginationFn(page,this.sortWay,this.tableConfiguration.sort.sortingColumn!);
+                
+        this.updateInformation(data[atrActualPage],data[atrPages],data[atrData]);
+    }
+
+
+    updateInformation(actualPage:number,pages:number,data:Array<object>){
+        this.tableConfiguration.pages = pages;
+        this.tableConfiguration.actualPage = actualPage;
+        this.tableConfiguration.rows = data;
+
+        this.printTable();
+        this.printPagination();
+    }
+
+    printPagination() {
+
+        const atrActualPage = this.tableConfiguration.attributesResponse.actualPage;
+        const atrPages = this.tableConfiguration.attributesResponse.pages;
+        const atrData = this.tableConfiguration.attributesResponse.data;
+        this.paginationHTML = `
+        <div class="w-50">
+            <input id="searchPage-${this.tableConfiguration.idTable}" type="number" min="1" step="1" placeholder="Ir a pagina">
+            <div id="searchPageBtn-${this.tableConfiguration.idTable}" class="default-pagination-search"><i class="fas fa-search"></i></div>
+        </div>
+        <div id="pagination-${this.tableConfiguration.idTable}-buttons" class="w-50">
+
+        <div class="default-firstPage"><i class="fas fa-angle-double-left"></i></div>
+        <div class="default-previousPage"><i class="fas fa-arrow-left"></i></div>
             
-//             <div>
-//               <span class="default-actualPage">${info.actualPage}</span>
-//               <span> - </span>
-//               <span class="default-totalPage">${info.noPages}</span>
-//             </div>
+             <div>
+               <span class="default-actualPage">${this.tableConfiguration.actualPage}</span>
+               <span> - </span>
+               <span class="default-totalPage">${this.tableConfiguration.pages}</span>
+             </div>
 
-//             <div class="default-nextPage"><i class="fas fa-arrow-right"></i></div>
-//             <div class="default-lastPage"><i class="fas fa-angle-double-right"></i></div>
-//     `;
+             <div class="default-nextPage"><i class="fas fa-arrow-right"></i></div>
+             <div class="default-lastPage"><i class="fas fa-angle-double-right"></i></div>
+     `;
 
-//     document.getElementById(id)!.innerHTML = paginationHTML;
+        document.getElementById(this.tableConfiguration.idPagination)!.innerHTML = this.paginationHTML;
 
-//     document.getElementById(`pagination-${idTable}-buttons`)!.querySelectorAll('div').forEach((button,i)=>{
-//         if(i===0){
-//             button.addEventListener('click',async()=>{
-//                data = await tableConfig.fetchFn(1,sort,columnOrdering);
-//                return data;
-//             })
-//         }
+        document.getElementById(`searchPageBtn-${this.tableConfiguration.idTable}`)!.addEventListener('click',()=>{
+            const input = (<HTMLInputElement>document.getElementById(`searchPage-${this.tableConfiguration.idTable}`)).value;
+            this.validateInput(input);
+        });
 
-//         if(i===1){
-//             button.addEventListener('click',async()=>{
-//                 const page = tableConfig.actualPage - 1;
+        document.getElementById(`searchPage-${this.tableConfiguration.idTable}`)!.addEventListener('keyup',async(e)=>{
+            if(e.key==='Enter'||e.keyCode===13){
+                this.validateInput((<HTMLInputElement>e.target).value)
+            }
+        })
 
-//                 if(page===0) return;
+        document.getElementById(`pagination-${this.tableConfiguration.idTable}-buttons`)!.querySelectorAll('div').forEach((button, i) => {
+            if (i === 0) {
+                button.addEventListener('click', async () => {
+                    this.setSort();
+                    const data:any = await this.tableConfiguration.paginationFn(1, this.sortWay, this.tableConfiguration.sort.sortingColumn!);
+                    
+                    this.updateInformation(data[atrActualPage],data[atrPages],data[atrData]);
 
-//                 data = await tableConfig.fetchFn(page,sort,columnOrdering);
-//                 return data;
-//             })
-//         }
+                });
+            }
 
-//         if(i===3){
-//             button.addEventListener('click',async()=>{
-//                 const page = tableConfig.actualPage + 1;
+            if (i === 1) {
+                button.addEventListener('click', async () => {
+                    const page = this.tableConfiguration.actualPage - 1;
+                    this.setSort();
 
-//                 if(page===tableConfig.pages) return;
+                    if (page === 0) return;
 
-//                 data = await tableConfig.fetchFn(page,sort,columnOrdering);
-//                 return data;
-//             })
-//         }
+                    const data:any = await this.tableConfiguration.paginationFn(page, this.sortWay, this.tableConfiguration.sort.sortingColumn!);
+                    
+                    this.updateInformation(data[atrActualPage],data[atrPages],data[atrData]);
 
-//         if(i===4){
-//             button.addEventListener('click',async()=>{
-//                 data = await tableConfig.fetchFn(tableConfig.pages,sort,columnOrdering);
-//                 return data;
-//             })
-//         }
-//     });
+                });
+            }
 
-// }
+            if (i === 3) {
+                button.addEventListener('click', async () => {
+                    const page = this.tableConfiguration.actualPage + 1;
+                    this.setSort();
+
+                    if (page > this.tableConfiguration.pages) return;
+
+                    const data:any = await this.tableConfiguration.paginationFn(page, this.sortWay, this.tableConfiguration.sort.sortingColumn!);
+
+                    this.updateInformation(data[atrActualPage],data[atrPages],data[atrData]);
+                })
+            }
+
+            if (i === 4) {
+                button.addEventListener('click', async () => {
+
+                    const lastPage = this.tableConfiguration.pages;
+                    this.setSort();
+
+                    const data:any = await this.tableConfiguration.paginationFn(lastPage, this.sortWay, this.tableConfiguration.sort.sortingColumn!);
+
+                    this.updateInformation(data[atrActualPage],data[atrPages],data[atrData]);
+                })
+            }
+        });
+    }
+}

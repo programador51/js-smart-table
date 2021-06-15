@@ -1,3 +1,7 @@
+body{
+    padding: 20px;
+}
+
 .w-50{
     width: 50%
 }
@@ -8,6 +12,20 @@
 
 .informationClass{
     padding:0 30px;
+}
+
+select{
+    display: block;
+}
+
+label{
+    font-weight: bold;
+}
+
+.filtros{
+    div{
+        margin:0 15px;
+    }
 }
 
 @import './default/default.scss';

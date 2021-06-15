@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body {
+  padding: 20px;
+}
+
 .w-50 {
   width: 50%;
 }
@@ -11,10 +15,22 @@
   padding: 0 30px;
 }
 
+select {
+  display: block;
+}
+
+label {
+  font-weight: bold;
+}
+
+.filtros div {
+  margin: 0 15px;
+}
+
 .default {
-  font-size: 0.5em;
+  font-size: 0.75em;
   border-collapse: collapse;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Century Gothic,Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
   margin: auto;
 }
@@ -56,10 +72,15 @@
   padding: 0.75em 1em;
 }
 
+.default-pagination-search {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
 .default-pagination {
   display: flex;
   justify-content: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Century Gothic,Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .default-pagination div:first-child {
@@ -88,8 +109,13 @@
   cursor: default;
 }
 
-.default-pagination input[type=number] {
+.default-pagination input[type=number], .default-pagination .default-pagination-search {
   padding: 5px 10px;
+  border: 0.1875em solid #e5e5e5;
+  height: 3.125em;
+  color: #737373;
+  background-color: #f9f9f9;
+  border-radius: 0.3125em;
 }
 
 .default-pagination input[type=number]::-webkit-inner-spin-button,

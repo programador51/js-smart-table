@@ -1,8 +1,8 @@
 @charset "UTF-8";
 .default {
-  font-size: 0.5em;
+  font-size: 0.75em;
   border-collapse: collapse;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Century Gothic,Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
   margin: auto;
 }
@@ -42,5 +42,55 @@
 .default td {
   border-bottom: 1.5px solid #bdbdbd;
   padding: 0.75em 1em;
+}
+
+.default-pagination {
+  display: flex;
+  justify-content: center;
+  font-family: Century Gothic,Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.default-pagination div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.default-pagination div:last-child {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.default-pagination div:last-child div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.default-pagination div:last-child div:hover {
+  background-color: #dbdbdb;
+  transition: ease-in-out 0.25s;
+}
+
+.default-pagination div:last-child div:nth-child(3) {
+  background-color: #fff;
+  cursor: default;
+}
+
+.default-pagination input[type=number] {
+  padding: 5px 10px;
+  border: 0.1875em solid #e5e5e5;
+  height: 3.125em;
+  color: #737373;
+  background-color: #f9f9f9;
+}
+
+.default-pagination input[type=number]::-webkit-inner-spin-button,
+.default-pagination input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.default-pagination input[type=number] {
+  -moz-appearance: textfield;
 }
 /*# sourceMappingURL=default.css.map */

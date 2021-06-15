@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="APITable.html">APITable</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getAssignatures">getAssignatures</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getAssignatures">getAssignatures</a></li></ul></div>
                 
             </nav>
         </div>
@@ -356,7 +356,7 @@
     <td class="type">
     
         
-<span class="param-type">string</span>
+<span class="param-type">object</span>
 
 
     
@@ -374,7 +374,7 @@
 
     
 
-    <td class="description last">URL Params in case that the API need it's for do an OK query of the requested data</td>
+    <td class="description last">Each attribute will be the name of the query param and his value, well, his value.</td>
 </tr>
 
         
@@ -607,8 +607,6 @@ You can change this attribute. In case it's !== from undefined, it will be add t
     
         <td class="attributes">
         
-            &lt;optional><br>
-        
 
         
         </td>
@@ -618,6 +616,124 @@ You can change this attribute. In case it's !== from undefined, it will be add t
 
     <td class="description last">The "tr" tags that will be build. Can have an "id" attribute. This id will be get from one of the attributes,
 of the fetched data. So, the string must match with the response of the resource data.</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sort</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Sort</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">This will the manner of sorting the data in case the user press the column of the table</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>paginationFn</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">function</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">This function will be use to fetch data through the buttons of navagition, and, if the API allows it, to order the data by columns in ASC or DESC</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>attributesResponse</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">AttributesResponse</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>stringQuery</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
 </tr>
 
         
@@ -866,6 +982,8 @@ for that column</td>
     
         <td class="attributes">
         
+            &lt;optional><br>
+        
 
         
         </td>
@@ -904,6 +1022,37 @@ a bold font, an specific color, an aligment, etc.</td>
     
 
     <td class="description last">This will indicate if it's allowed to sort the column by ASC or DESC (independently if the class on the client-side or API)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sortThis</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">This it's just to highlight on the html the actual sorting</td>
 </tr>
 
         
@@ -948,7 +1097,7 @@ a bold font, an specific color, an aligment, etc.</td>
         <p class="tag-source">
             <a href="types.d.ts.html" class="button">View Source</a>
             <span>
-                <a href="types.d.ts.html">types.d.ts</a>, <a href="types.d.ts.html#line24">line 24</a>
+                <a href="types.d.ts.html">types.d.ts</a>, <a href="types.d.ts.html#line28">line 28</a>
             </span>
         </p>
     

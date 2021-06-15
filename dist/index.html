@@ -15,20 +15,52 @@
     <title>js-smart-table</title>
   </head>
   <body>
-    <select name="hour" id="hourAssignature">
-      <option value="5">> 5</option>
-      <option value="10">> 10</option>
-      <option value="15">> 15</option>
-    </select>
 
-    <div class="">
-      <div class="w-100">
+    <div class="filtros d-flex justify-content-start">
+      <div>
+        <label for="horaFiltro">Hora</label>
+          <select id="horaFiltro" name="horaFiltro">
+            <option value="0">M1</option>
+            <option value="1">M2</option>
+            <option value="2">M3</option>
+            <option value="3">M4</option>
+            <option value="4">M5</option>
+            <option value="5">M6</option>
+            <option value="6">V1</option>
+            <option value="7">V2</option>
+            <option value="8">V3</option>
+            <option value="9">V4</option>
+            <option value="10">V5</option>
+            <option value="11">V6</option>
+            <option value="12">N1</option>
+            <option value="13">N2</option>
+            <option value="14">N3</option>
+            <option value="15">N4</option>
+            <option value="16">N5</option>
+            <option value="17">N6</option>
+          </select>
+      </div>
+
+      <div>
+        <label for="planFiltro">Plan</label>
+          <select name="planFiltro" id="planFiltro">
+            <option value="100">100</option>
+            <option value="102">102</option>
+            <option value="103">103</option>
+            <option value="401">401</option>
+          </select>
+      </div>
+    </div>
+    
+
+    <div class="d-flex justify-content-around">
+      <div class="w-50">
         <table id="users-info"></table>
         <div id="pagination-users-info" class="default-pagination">
         </div>
       </div>
 
-      <div class="w-100 informationClass">
+      <div class="w-50 informationClass">
         <img
           class="img-fluid"
           src="http://logistica.fime.uanl.mx/img/logo-fime.gif"
@@ -36,9 +68,9 @@
         />
 
         <ul>
-          <li id="name"></li>
-          <li id="email"></li>
-          <li id="id"></li>
+          <li>Plan: <span id="plan"></span></li>
+          <li>Materia: <span id="materia"></span></li>
+          <li>Salon: <span id="salon"></span></li>
         </ul>
       </div>
     </div>
