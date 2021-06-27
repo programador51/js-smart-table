@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -15,57 +15,50 @@
     <title>js-smart-table</title>
   </head>
   <body>
-
-    <h1 class="text-center">Demo</h1>
+    <h1 class="text-center">demo - js-smart-table - v1.0.4</h1>
 
     <form id="filtro" class="filtros d-flex justify-content-start mb-4">
       <div>
         <label for="horaFiltro">Hora</label>
-          <select id="horaFiltro" name="horaFiltro">
-            <option value="0">M1</option>
-            <option value="1">M2</option>
-            <option value="2">M3</option>
-            <option value="3">M4</option>
-            <option value="4">M5</option>
-            <option value="5">M6</option>
-            <option value="6">V1</option>
-            <option value="7">V2</option>
-            <option value="8">V3</option>
-            <option value="9">V4</option>
-            <option value="10">V5</option>
-            <option value="11">V6</option>
-            <option value="12">N1</option>
-            <option value="13">N2</option>
-            <option value="14">N3</option>
-            <option value="15">N4</option>
-            <option value="16">N5</option>
-            <option value="17">N6</option>
-          </select>
+        <select class="form-control" id="horaFiltro" name="horaFiltro">
+          <option value="0">M1</option>
+          <option value="1">M2</option>
+          <option value="2">M3</option>
+          <option value="3">M4</option>
+          <option value="4">M5</option>
+          <option value="5" selected="true">M6</option>
+          <option value="6">V1</option>
+          <option value="7">V2</option>
+          <option value="8">V3</option>
+          <option value="9">V4</option>
+          <option value="10">V5</option>
+          <option value="11">V6</option>
+          <option value="12">N1</option>
+          <option value="13">N2</option>
+          <option value="14">N3</option>
+          <option value="15">N4</option>
+          <option value="16">N5</option>
+          <option value="17">N6</option>
+        </select>
       </div>
 
       <div>
         <label for="planFiltro">Plan</label>
-          <select name="planFiltro" id="planFiltro">
-            <option value="100">100</option>
-            <option value="102">102</option>
-            <option value="103">103</option>
-            <option value="401">401</option>
-          </select>
+        <select class="form-control" name="planFiltro" id="planFiltro">
+          <option value="100">100</option>
+          <option value="102">102</option>
+          <option value="103">103</option>
+          <option value="401" selected="true">401</option>
+        </select>
       </div>
 
-      <div>
-        <label class="d-block" for="materiaBusqueda">Materia</label>
-        <input type="text" id="materiaBusqueda" name="materiaBusqueda" placeholder="Escribe aqui">
-      </div>
-
-      <input type="submit" value="Buscar">
+      <input class="btn btn-primary" type="submit" value="Buscar" />
     </form>
-    
 
     <div class="d-flex justify-content-around">
       <div class="w-50">
         <table id="users-info"></table>
-        <div id="pagination-users-info" class="default-pagination"></div>
+        <div id="pagination-users-info" class="w-100 default-pagination"></div>
       </div>
 
       <div class="w-50 informationClass">
@@ -80,8 +73,116 @@
           <li>Materia: <span id="materia"></span></li>
           <li>Salon: <span id="salon"></span></li>
         </ul>
+
+        <div id="actionsAssignature" class="d-flex justify-content-end">
+          <!-- <button class="btn btn-primary ml-4">Edit asignature</button>
+          <button class="btn btn-danger ml-4">Erase asignatura</button> -->
+        </div>
+
+        <p class="mt-5">
+          When you click a row, will load the data that was fetched from the API
+          (or any source) that <b>it's stored</b> on the library in order to
+          avoid an unnecesary re-fetch of the data "clicked".
+        </p>
+
+        <p>
+          You can do anything, open a modal and fill the inputs with the
+          according row, save the data as "global" in order to access to another
+          pages that needs this data, etc.
+        </p>
+
+        <p>
+          The only situations when the library request information to the API or
+          source information, it's when You request a page (by input or buttons
+          navigation) and when you "configurate" the table in order that the
+          data it's sorted by the server (API)
+        </p>
       </div>
+
+      <div
+        class="modal fade"
+        id="modalEdit"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"
+                    >Recipient:</label
+                  >
+                  <input type="text" class="form-control" id="recipient-name" />
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label"
+                    >Message:</label
+                  >
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Send message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact" class="mt-5">
+
+      <h2>More information</h2>
+
+      <ul>
+        <li>
+          <a href="">Documentation</a>
+        </li>
+
+        <li>
+          You can contact me by <a href="https://www.facebook.com/zhavopp">Facebook</a>
+          and discord with joseluis#0144
+        </li>
+
+        <li>
+          You can check the code on <a href="https://github.com/programador51/js-smart-table">Github</a>.
+          The "core" of the code it's partially done so you can code a differente css for the table and
+          a different style of pagination (dont't recommend until the code reachs the version 1.1.X)
+        </li>
+
+        <li>
+          If you preffer, you can download this API <a href="https://github.com/Luisrjm09/ADBD">here</a> 
+          to run it locally on your machine to test it or practice. 
+          (Since this will be hosted on a free one)
+        </li>
+        
+      </ul>
     </div>
   </body>
   <script src="bundle.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
 </html>

@@ -24,6 +24,8 @@ export async function getAssignatures(page:number=1,order:string="ASC",columnOrd
 
     const assignatures = await query.json();
 
+    console.log(assignatures.data);
+
     return assignatures.data;
 }
 
@@ -33,10 +35,10 @@ export async function getAssignatures(page:number=1,order:string="ASC",columnOrd
  * @function cbSelection
  * @param {Event} e - Event for the clicked row.
  */
-function printAssignature(e:Event){
-    console.log(Users.infoRow);
+// function printAssignature(e:Event){
+//     console.log(Users.infoRow);
     
-    document.getElementById('plan')!.innerText = Users.infoRow.plan;
-    document.getElementById('materia')!.innerText = Users.infoRow.nombreMateria;
-    document.getElementById('salon')!.innerText = Users.infoRow.salon;
-}
+//     document.getElementById('plan')!.innerText = Users.infoRow.plan;
+//     document.getElementById('materia')!.innerText = Users.infoRow.nombreMateria;
+//     document.getElementById('salon')!.innerText = Users.infoRow.salon;
+// }

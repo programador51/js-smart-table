@@ -78,9 +78,10 @@ class Table{
 
             const params = Object.keys(this.tableConfiguration.urlParams);
 
-            params.map((param:any)=>{
+            params.map((param:string)=>{
 
                 const query = `&${param}`;
+                
                 const queryValue = this.tableConfiguration.urlParams[param];
 
                 stringURLParams+=`${query}=${queryValue}`;
@@ -101,7 +102,6 @@ class Table{
         this.generateHeader();
         this.generateBody();
         this.getURLQuery();
-        this.view();
     }
 
     generateBody() {

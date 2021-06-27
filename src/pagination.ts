@@ -95,9 +95,8 @@ export class DefaultTable extends Table {
 
         this.getURLQuery();
 
-        const data = await this.tableConfiguration.paginationFn(1,sort,column,this.tableConfiguration.urlParams);
+        const data:{[key:string]:any} = await this.tableConfiguration.paginationFn(1,sort,column,this.tableConfiguration.stringQuery);
 
-        console.log('data',data);
         this.tableConfiguration.rows = data[this.tableConfiguration.attributesResponse.data];
         this.tableConfiguration.pages = data[this.tableConfiguration.attributesResponse.pages];
         this.tableConfiguration.actualPage = 1
@@ -123,7 +122,7 @@ export class DefaultTable extends Table {
         const atrPages = this.tableConfiguration.attributesResponse.pages;
         const atrData = this.tableConfiguration.attributesResponse.data;
         this.paginationHTML = `
-        <div class="w-50">
+        <div class="">
             <input id="searchPage-${this.tableConfiguration.idTable}" type="number" min="1" step="1" placeholder="Ir a pagina">
             <div id="searchPageBtn-${this.tableConfiguration.idTable}" class="default-pagination-search"><i class="fas fa-search"></i></div>
         </div>
