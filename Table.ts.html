@@ -54,6 +54,26 @@
                     API Documentation
                 </a>
                 
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-How to use.html">
+                                How to use
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-Pre-requisites.html">
+                                Pre-requisites
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
                 
                 
             </div>
@@ -165,9 +185,10 @@ class Table{
 
             const params = Object.keys(this.tableConfiguration.urlParams);
 
-            params.map((param:any)=>{
+            params.map((param:string)=>{
 
                 const query = `&amp;${param}`;
+                
                 const queryValue = this.tableConfiguration.urlParams[param];
 
                 stringURLParams+=`${query}=${queryValue}`;
@@ -188,7 +209,6 @@ class Table{
         this.generateHeader();
         this.generateBody();
         this.getURLQuery();
-        this.view();
     }
 
     generateBody() {

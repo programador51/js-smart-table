@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> How to use</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-How to use.html">
+                                How to use
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-Pre-requisites.html">
+                                Pre-requisites
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar tutorials"
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-How to use.html">How to use</a></li><li><a href="tutorial-Pre-requisites.html">Pre-requisites</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Tutorial</p>
+                    <h1>How to use</h1>
+                </header>
+                <section>
+
+<article>
+    <p>Before start, you can guide yourself with the video that it's on <strong><a href="https://www.youtube.com/watch?v=R1qauiXDGDY">YouTube</a></strong> (Spanish) and with the example code on <strong><a href="https://github.com/programador51/example-js-smart-table">Github</a></strong>. The video it's exactly the same guide that you'll see on this guide, but more graphically.</p>
+<h2>1. Create the HTML tags on the document</h2>
+<ol>
+<li>
+<p>You need to create a table tag with an id. The
+id can be anything. Just remember this id because will be need on the next steps.</p>
+</li>
+<li>
+<p>You need to create an html tag, div for example, with an id. The id can be anything. Just remember this id because will be need on the next steps.</p>
+</li>
+<li>
+<p>Add the css style sheet. (You can use the .scss file to if you preffer it).
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;../node_modules/js-smart-table/dist/styles/main.css&quot;&gt;</code></p>
+</li>
+</ol>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-html"><code>&lt;!DOCTYPE html>
+&lt;html lang=&quot;en&quot;>
+  &lt;head>
+    &lt;meta charset=&quot;UTF-8&quot; />
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; />
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; />
+    &lt;title>js-smart-table&lt;/title>
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;../node_modules/js-smart-table/dist/styles/main.css&quot;>
+  &lt;/head>
+  &lt;body>
+    &lt;table id=&quot;users&quot;>&lt;/table>
+    &lt;div id=&quot;pagination-users&quot;>&lt;/div>
+  &lt;/body>
+  &lt;script src=&quot;bundle.js&quot;>&lt;/script>
+&lt;/html>
+
+</code></pre>
+<h2>2. Create the type configuration</h2>
+<h3>Note.</h3>
+<p>You can check the <strong><a href="https://github.com/programador51/example-js-smart-table/blob/main/src/configuration-table.js">repository</a></strong> as an example to follow this 'How to use'.</p>
+<p>This means create an object that must follow an skeleton in order to work. The structure that must follow it's of <strong>type APIConfig</strong>.</p>
+<p><img src="https://res.cloudinary.com/dmtvwe2ur/image/upload/v1624744556/js-smart-table/type-APIConfig_lv6pau.png" alt="type-APIConfig"></p>
+<p>This configuration, contains more <strong>type configurations</strong>, you can check that types meanwhile we advance on the tutorial. This was just to notice you that the json we gonna create must follow to structure or won't work.</p>
+<hr>
+<ol>
+<li><strong>idTable:string</strong> - HTML id of the tag table that it's on the HTML.</li>
+</ol>
+<p><strong>Example</strong> (As we progress through the guide, the other properties will be reflected in the sample codes.)</p>
+<pre class="prettyprint source lang-javascript"><code>const configurationUsers = {
+    idTable:'users'
+};
+</code></pre>
+<hr>
+<ol start="2">
+<li><strong>idPagination:string</strong>: - HTML id of the tag div created that will work as the pagination.</li>
+</ol>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const configurationUsers = {
+    idTable:'users',
+    idPagination:'pagination-users'
+};
+</code></pre>
+<hr>
+<ol start="3">
+<li><strong>urlParams?:object</strong>: - URL Params that will have the initial table when fetchs the data. This urls params can be set manually on the code or can be get from a select (just to put an example).</li>
+</ol>
+<p><img src="https://images.squarespace-cdn.com/content/v1/5b3db57531d4df55852d3dcd/1536365285207-AUMQ2OQC4WQUDKGQXWVM/url+parameter+components.png?format=750w" alt="url-params"></p>
+<p>More information about the url params <strong><a href="https://www.kameronjenkins.com/seo/url-parameters-query-strings">here</a></strong></p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>export const configurationUsers = {
+    idTable:'users',
+    idPagination:'pagination-users',
+    urlParams:{
+        hora:'0',
+        materia:'401'
+    }
+};
+</code></pre>
+<p>That property, by behind, will be converted into this: <code>&amp;hora=0&amp;materia=401</code>.</p>
+<p>This data can be access by the property of the instance calling <code>[your_instance_name].[your_name_configuration_table_variable].stringQuery</code></p>
+<hr>
+<ol start="4">
+<li><strong>pages:number</strong>:Indicates the number of pages founded for the requested data.</li>
+</ol>
+<p>Because we are creating the configuration, we can set this with 0 for now.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>export const configurationUsers = {
+    idTable:'users',
+    idPagination:'pagination-users',
+    urlParams:{
+        hora:'0',
+        materia:'401'
+    },
+    pages:0
+</code></pre>
+<hr>
+<ol start="5">
+<li><strong>rows:Array|object|:</strong> JSON with the data founded. Array of objects.</li>
+</ol>
+<p>Because we're creating the configuration, we can set this as empty. Then we can fill it.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>export const configurationUsers = {
+    idTable:'users',
+    idPagination:'pagination-users',
+    urlParams:{
+        hora:'0',
+        materia:'401'
+    },
+    pages:0,
+    rows:[]
+};
+</code></pre>
+<hr>
+<ol start="6">
+<li><strong>actualPage:number</strong>: Indicates which page we are now on the navigation of the table.</li>
+</ol>
+<p>Because we're creating the configuration, we can set this as 0.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>export const configurationUsers = {
+    idTable:'users',
+    idPagination:'pagination-users',
+    urlParams:{
+        hora:'0',
+        materia:'401'
+    },
+    pages:0,
+    rows:[],
+    actualPage:0
+};
+</code></pre>
+<hr>
+<ol start="7">
+<li><strong>headerConfig:Array|object|</strong>: This is a 'type definition'. Let's se how must be this property. You can see this as the &quot;configuration of columns&quot;</li>
+</ol>
+<p><img src="https://res.cloudinary.com/dmtvwe2ur/image/upload/v1624763101/js-smart-table/type-headerConfig_lfjvro.png" alt="type-definition-headerConfig"></p>
+<p>7.1 <strong>text:string</strong>: The text that it's gonna appear on the column of the table.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>
+const headerConfig = [
+    { 
+        text:'Materia'
+    }
+];
+</code></pre>
+<p>7.2 <strong>columnNameDB:string</strong>: It's the value of the argument that needs the API in order to know which column must order when the data it's requested. This value it deppends of the API that you're using. If the API can accept arguments in order to sort, you can put this value, if not, it doesn't mind.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>
+
+const headerConfig = [
+    { 
+        text:'Materia',
+        columnNameDB:'nombreMateria'
+    }
+];
+</code></pre>
+<p>7.3 <strong>idHeader:string</strong>: Value of the id that is gonna have this <code>th</code> tag in order to manipulate with the DOM in the case that we want do it.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const headerConfig = [
+    { 
+        text:'Materia',
+        columnNameDB:'nombreMateria',
+        idHeader:'nameAssignature'
+    }
+];
+</code></pre>
+<p>7.4 <strong>attributeToPrint:string</strong>: The attribute of the objects that must be printed on the UI.</p>
+<p><strong>Example</strong>
+Suppose you have this structure on the JSON data.</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;idAssignature&quot;: 829,
+    &quot;clave&quot;: 831,
+    &quot;plan&quot;: 401,
+    &quot;grupo&quot;: 1,
+    &quot;dia&quot;: 2,
+    &quot;hora&quot;: 0,
+    &quot;salon&quot;: &quot;1102&quot;,
+    &quot;actualCapacity&quot;: 0,
+    &quot;maxCapacity&quot;: 20,
+    &quot;nombreMateria&quot;: &quot;ADMON DE PROYECTOS DE SOFTWARE&quot;
+}
+</code></pre>
+<p>By know, i will put <code>nombreMateria</code> because im creating a column for the name assignatures, so, it's logic to print that text con the rows.</p>
+<pre class="prettyprint source lang-javascript"><code>const headerConfig = [
+    { 
+        text:'Materia',
+        columnNameDB:'nombreMateria',
+        idHeader:'nameAssignature',
+        attributeToPrint:'nombreMateria'
+    }
+];
+</code></pre>
+<p>7.5 <strong>sortable:boolean</strong>: If true, when the user clicks on the column of the UI, the code will know that must sort the data by the column the user clicked. If false, the code just wont do anything.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const headerConfig = [
+    { 
+        text:'Materia',
+        columnNameDB:'nombreMateria',
+        idHeader:'nameAssignature',
+        attributeToPrint:'nombreMateria',
+        sortable:true
+    }
+];
+</code></pre>
+<p>7.6 <strong>css:string</strong> - CSS style that gonna have the rows at the moment of impression. (This style must exist in your css sheet in order to work)</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const headerConfig = [
+    { 
+        text:'Materia',
+        columnNameDB:'nombreMateria',
+        idHeader:'nameAssignature',
+        attributeToPrint:'nombreMateria',
+        sortable:true,
+        css:'font-weight-bold'
+    }
+];
+</code></pre>
+<p>7.7 <strong>sortThis?:boolean</strong> - If true, by default the code will set everything in order to set that the data must be fetched by this column. This property just must be use on one object of the array.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const headerConfig = [
+    { 
+        text:'Materia',
+        columnNameDB:'nombreMateria',
+        idHeader:'nameAssignature',
+        attributeToPrint:'nombreMateria',
+        sortable:true,
+        sortThis:true
+    },
+
+    { text: 
+        'Salon', 
+        columnNameDB: 'salon', 
+        idHeader: 'assignatureRoom', 
+        attributeToPrint: 'salon', 
+        sortable: true 
+    }
+];
+</code></pre>
+<hr>
+<ol start="8">
+<li><strong>styleTable?:string</strong> - &quot;Appearance/Theme&quot; that will have the table when it renders on the browsers. Must be one of the available strings on the list.</li>
+</ol>
+<ul>
+<li>default</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>export const configurationUsers = {
+    idTable:'users',
+    idPagination:'pagination-users',
+    urlParams:{
+        hora:'0',
+        materia:'401'
+    },
+    pages:0,
+    rows:[],
+    actualPage:0,
+    headerConfig,
+    styleTable:'default'
+};
+</code></pre>
+<p>If you preffer, you can avoid this and set your own styles.</p>
+<hr>
+<ol start="9">
+<li><strong>cbSelection:function</strong> - Function that will be executed when you click a row from the table. The function must receive an argument to listen the event of the click.</li>
+</ol>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>function cbSelection(e){
+    alert('Seleccionaste una fila de la tabla');
+    console.log(e);
+}
+</code></pre>
+<hr>
+<ol start="10">
+<li><strong>idRows:string</strong> - Attribute of the response to be use as id for the <code>tr</code> tags.</li>
+</ol>
+<p><strong>Example</strong></p>
+<p>Imagine you have this as response</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;idAssignature&quot;: 829,
+    &quot;clave&quot;: 831,
+    &quot;plan&quot;: 401,
+    &quot;grupo&quot;: 1,
+    &quot;dia&quot;: 2,
+    &quot;hora&quot;: 0,
+    &quot;salon&quot;: &quot;1102&quot;,
+    &quot;actualCapacity&quot;: 0,
+    &quot;maxCapacity&quot;: 20,
+    &quot;nombreMateria&quot;: &quot;ADMON DE PROYECTOS DE SOFTWARE&quot;
+}
+</code></pre>
+<p>If you put <code>idAssignature</code> the rows will have that information as id on the tag.</p>
+<pre class="prettyprint source lang-javascript"><code>export const configurationUsers = {
+    idTable:'users',
+    idPagination:'pagination-users',
+    urlParams:{
+        hora:'0',
+        materia:'401'
+    },
+    pages:0,
+    rows:[],
+    actualPage:0,
+    headerConfig,
+    styleTable:'default',
+    cbSelection,
+    idRows:'idAssignature'
+};
+</code></pre>
+<hr>
+<ol start="11">
+<li><strong>sort:object</strong> - Type definition. This indicates how must be the sorting.</li>
+</ol>
+<p><img src="https://res.cloudinary.com/dmtvwe2ur/image/upload/v1624765408/js-smart-table/type-sort_uyid30.png" alt="type-sort"></p>
+<p>11.1 <strong>sqlSort:boolean</strong> - If true, the sort will be by the API, if false, the data will be sorted on the client side (just the visible ones on the moment of fetch)</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const sort = {
+    sqlSort:true
+}
+</code></pre>
+<p>11.2 <strong>sortASC:boolean</strong> - If true, data it's gonna be sort ASC, if not, then DESC.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const sort = {
+    sqlSort:true,
+    sortASC:true
+}
+</code></pre>
+<hr>
+<ol start="12">
+<li><strong>paginationFn:function</strong> - Function that's gonna be used to fetch the information when navigate thorught the pages or request a new way or sorting the data. This codes will executes</li>
+</ol>
+<ul>
+<li>When we navigate througth the pagination (buttons or inputs)</li>
+<li>Sort in a differente way the data (clicking the columns of the table)</li>
+</ul>
+<p>This function must follow a structure in order to work.</p>
+<p><strong>Function</strong></p>
+<pre class="prettyprint source lang-javascript"><code>/**
+ * How must looks like the functions that fetchs data from the API
+ * 
+ * @async
+ * @function paginationFn
+ * @param {number} page - The page requested of the information
+ * @param {string} order - ASC or DESC the data
+ * @param {string} columnOrdering - Which column it's gonna be counted for the sorting (must match with the column table of the table on DB)
+ * @param {string|undefined} additionalQuery - In case you want set more url params, you need to pass the array
+ * @returns {object} 
+ */
+export async function paginationFn(page,order,columnOrdering,additionalQuery=&quot;&hora=0&plan=401&quot;){
+
+    let assignatures = await fetch(`http://localhost:4000/api/paso1/materias?pagina=${page}&orden=${order}&columna=${columnOrdering}${additionalQuery}`);
+
+    assignatures = await assignatures.json();
+
+    return assignatures.data;
+}
+</code></pre>
+<p>Its important that the object that returns the function, must have at least, this 3 propertys</p>
+<ul>
+<li><strong>actual page that corresponds the requested data</strong></li>
+<li><strong>number of pages founded</strong></li>
+<li><strong>the data</strong></li>
+<li><code>property x</code></li>
+<li><code>property z</code></li>
+<li><code>etc...</code></li>
+</ul>
+<p>This it's the 'structure' that the fetchFn must return. (Just an example). As you can see, it's an object that the <code>paginationFn</code> must return.</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;assignatures&quot;: [
+    {
+        &quot;idAssignature&quot;: 829,
+        &quot;clave&quot;: 831,
+        &quot;plan&quot;: 401,
+        &quot;grupo&quot;: 1,
+        &quot;dia&quot;: 2,
+        &quot;hora&quot;: 0,
+        &quot;salon&quot;: &quot;1102&quot;,
+        &quot;actualCapacity&quot;: 0,
+        &quot;maxCapacity&quot;: 20,
+        &quot;nombreMateria&quot;: &quot;ADMON DE PROYECTOS DE SOFTWARE&quot;
+    },
+
+        {...},
+        {...}
+
+    ],
+
+    &quot;pages&quot;: 3,
+
+    &quot;actualPage&quot;: 1
+}
+</code></pre>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>export const configurationUsers = {
+    idTable:'users',
+    idPagination:'pagination-users',
+    urlParams:{
+        hora:'0',
+        materia:'401'
+    },
+    pages:0,
+    rows:[],
+    actualPage:0,
+    headerConfig,
+    styleTable:'default',
+    cbSelection,
+    idRows:'idAssignature',
+    sort,
+    paginationFn
+};
+</code></pre>
+<ol start="13">
+<li><strong>attributesResponse:object</strong> - A type definition.
+Taking as example the next data that returns the <code>paginationFn</code> after fetching the API</li>
+</ol>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;assignatures&quot;: [
+    {
+        &quot;idAssignature&quot;: 829,
+        &quot;clave&quot;: 831,
+        &quot;plan&quot;: 401,
+        &quot;grupo&quot;: 1,
+        &quot;dia&quot;: 2,
+        &quot;hora&quot;: 0,
+        &quot;salon&quot;: &quot;1102&quot;,
+        &quot;actualCapacity&quot;: 0,
+        &quot;maxCapacity&quot;: 20,
+        &quot;nombreMateria&quot;: &quot;ADMON DE PROYECTOS DE SOFTWARE&quot;
+    },
+
+        {...},
+        {...}
+
+    ],
+
+    &quot;pages&quot;: 3,
+
+    &quot;actualPage&quot;: 1
+}
+</code></pre>
+<hr>
+<p>13.1 <strong>pages:string</strong> - Here it's goes the name of the attribute that contains the number of pages. On this case.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const attributesResponse = {
+    pages:'pages'
+};
+</code></pre>
+<p>13.2 <strong>actualPage:string</strong> - Here it's goes the name of the attribute that contains the actual page that correspond to the fetched data. On this case.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>
+const attributesResponse = {
+    pages:'pages',
+    actualPage:'actualPage'
+};
+</code></pre>
+<p>13.3 <strong>data:string</strong> - Here it's goes the name of the attribute that contains the JSON with the data. On this case.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>const attributesResponse = {
+    pages:'pages',
+    actualPage:'actualPage',
+    data:'assignatures'
+};
+</code></pre>
+<p>Nice! At this point it's already created the object that need the constructor at the moment of instance. So let's go with that.</p>
+<hr>
+<h2>3. Import the library</h2>
+<h3>Importing the library</h3>
+<p>When you import the library, you need to do it like this.</p>
+<pre class="prettyprint source lang-javascript"><code>import { DefaultTable } from 'js-smart-table/dist/pagination';
+</code></pre>
+<p>Here, you can do an object destructuring. For now, it's only available the <code>DefaultTable</code> class. Each class you can see it as the code of different <code>theme</code> styles to display the table.</p>
+<p><strong>List of classes you can import</strong></p>
+<ul>
+<li>DefaultTable</li>
+</ul>
+<p>A little reminder, that you can see all this on the <strong><a href="https://github.com/programador51/example-js-smart-table/blob/main/src/index.js">repository</a></strong></p>
+<h3>Importing the configuration variable</h3>
+<pre class="prettyprint source lang-javascript"><code>import { configurationUsers } from './configuration-table';
+</code></pre>
+<h3>Initializing the table</h3>
+<p>Before initialize the code to display the table, it's necessary overwrite the configuration variable. Because all was setted as 'empty'. So, in order that something it's display when the table renders, the configuration file need the data, especificaly of the propertys</p>
+<ul>
+<li>pages</li>
+<li>rows</li>
+<li>actualPage</li>
+</ul>
+<p>How to achieve this? Calling the data from the API for the first page and overwrite with the response information.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>import { DefaultTable } from 'js-smart-table/dist/pagination';
+import { configurationUsers } from './configuration-table';
+import { paginationFn } from './api';
+
+async function initialLoad(){
+    const dataFetched = await paginationFn(1,'DESC','nombreMateria','&hora=0&plan=401');
+    
+    configurationUsers.pages = dataFetched.pages;
+    configurationUsers.actualPage = dataFetched.actualPage;
+    configurationUsers.rows = dataFetched.assignatures;
+}
+
+initialLoad();
+</code></pre>
+<h3>Final step, print it!</h3>
+<p>Now that the configuration variable has the data, when the methods of the class <code>printTable()</code> and <code>printPagination</code> are used, they will display the data tabulated.</p>
+<ul>
+<li><code>printTable</code> it's use to display the data tabulated according to the configuration set.</li>
+<li><code>printPagination</code> it's use to display the pagination according to <strong>the class used</strong> to instance.</li>
+</ul>
+<p>So, now just remains use the the methods.</p>
+<p><strong>Example</strong></p>
+<pre class="prettyprint source lang-javascript"><code>import { DefaultTable } from 'js-smart-table/dist/pagination';
+import { configurationUsers } from './configuration-table';
+import { paginationFn } from './api';
+
+let Assignatures;
+
+async function initialLoad(){
+    const dataFetched = await paginationFn(1,'DESC','nombreMateria','&hora=0&plan=401');
+    
+    configurationUsers.pages = dataFetched.pages;
+    configurationUsers.actualPage = dataFetched.actualPage;
+    configurationUsers.rows = dataFetched.assignatures;
+    
+    Assignatures = new DefaultTable(configurationUsers);
+    Assignatures.printTable();
+    Assignatures.printPagination();
+}
+
+initialLoad();
+</code></pre>
+<p>Again, a little reminder that the code of this guide it's <strong><a href="https://github.com/programador51/example-js-smart-table">here</a></strong></p>
+</article>
+
+</section>
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

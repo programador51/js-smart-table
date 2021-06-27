@@ -52,6 +52,26 @@
                     API Documentation
                 </a>
                 
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-How to use.html">
+                                How to use
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-Pre-requisites.html">
+                                Pre-requisites
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
                 
                 
             </div>
@@ -274,9 +294,9 @@
 
     
         <p class="tag-source">
-            <a href="helpers_api.ts.html" class="button">View Source</a>
+            <a href="helpers_api.js.html" class="button">View Source</a>
             <span>
-                <a href="helpers_api.ts.html">helpers/api.ts</a>, <a href="helpers_api.ts.html#line25">line 25</a>
+                <a href="helpers_api.js.html">helpers/api.js</a>, <a href="helpers_api.js.html#line78">line 78</a>
             </span>
         </p>
     
@@ -298,6 +318,407 @@
 
 
 
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="cbSelection">
+        <a class="href-link" href="#cbSelection">#</a>
+        
+        <span class="code-name">
+            
+                cbSelection<span class="signature">(e)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        How must look the function for the property cbSelection
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>e</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Event</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Event for the clicked row.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_api.ts.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_api.ts.html">helpers/api.ts</a>, <a href="helpers_api.ts.html#line26">line 26</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="paginationFn">
+        <a class="href-link" href="#paginationFn">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                paginationFn<span class="signature">(page, order, columnOrdering, additionalQuery)</span><span class="type-signature"> &rarr; {object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        How must looks like the functions that fetchs data from the API
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>page</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The page requested of the information</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>order</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">ASC or DESC the data</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>columnOrdering</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Which column it's gonna be counted for the sorting (must match with the column table of the table on DB)</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>additionalQuery</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">In case you want set more url params, you need to pass the array</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_api.js.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_api.js.html">helpers/api.js</a>, <a href="helpers_api.js.html#line41">line 41</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
