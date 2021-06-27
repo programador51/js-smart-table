@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> Pre-requisites</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,61 +80,76 @@
 </div>
     <div id="main">
         <div
-            class="sidebar "
+            class="sidebar tutorials"
             id="sidebarNav"
         >
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Table.html">Table</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cbSelection">cbSelection</a></li><li><a href="global.html#paginationFn">paginationFn</a></li></ul></div>
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-How to use.html">How to use</a></li><li><a href="tutorial-Pre-requisites.html">Pre-requisites</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Tutorial</p>
+                    <h1>Pre-requisites</h1>
                 </header>
-                
+                <section>
 
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    <section>
-        <article><h3>Tabulate data from an API an make it sortable (if the API allows it).</h3>
-<p>Video-Demo of how tabulates the data and what you can do with it.</p>
-<p><img src="https://res.cloudinary.com/dmtvwe2ur/image/upload/v1624817121/js-smart-table/demo_ysewdu.gif" alt="video-demo"></p>
-<p><img src="https://res.cloudinary.com/dmtvwe2ur/image/upload/v1624835333/js-smart-table/ejemplo_xryrbn.png" alt="tutorial"></p>
+<article>
+    <p>In order this library works, you need:</p>
 <ul>
-<li><strong><a href="https://programador51.github.io/js-smart-table/">Documentation</a></strong></li>
-<li><strong><a href="https://www.youtube.com/watch?v=R1qauiXDGDY">Video tutorial</a></strong></li>
-<li><strong><a href="https://github.com/programador51/example-js-smart-table">Example code</a></strong></li>
-</ul></article>
-    </section>
+<li>
+<p>An API that allows:</p>
+<ul>
+<li>Request an specific page of the data</li>
+<li>Request order the data by a column (optional)</li>
+<li>Request order the data ASC or DESC (optional)</li>
+<li>Returns the page requested</li>
+<li>Returns the data requested</li>
+<li>Returns the quantity of pages founded for the requested data (in order to paginate)</li>
+</ul>
+</li>
+<li>
+<p>Have a little experience using APIs</p>
+</li>
+</ul>
+<p>A good example of API that that complies this it's <strong><a href="https://reqres.in/">reqres.in</a></strong></p>
+<p>On the next part of the tutorial, will be an example of how to use this library. You can use any API that complies the points touched above.</p>
+<p>You can use one of this APIS to follow the tutorial</p>
+<ul>
+<li><strong><a href="https://demo-js-smart-table.herokuapp.com/api/paso1/materias?pagina=1&amp;orden=ASC&amp;columna=nombreMateria&amp;hora=0&amp;plan=401">Assignatures (API that's gonna be used for the tutorial)</a></strong></li>
+<li><strong><a href="https://reqres.in/api/users?page=1">reqres</a></strong></li>
+</ul>
+<hr>
+<p>In case that you want to use the API of assignatures and it's down, you can download it <strong><a href="https://github.com/Luisrjm09/ADBD/tree/main/server">here</a></strong> and run it locally on your machine.</p>
+<hr>
+<h2>Install the provided API (optional)</h2>
+<p>You can skip this if you preffer use <strong><a href="https://reqres.in/">reqres.in</a></strong> or if the API of <strong>Assignatures</strong> stills online</p>
+<ol>
+<li>
+<p>Download the <strong><a href="https://github.com/Luisrjm09/ADBD">repository</a></strong> and execute <code>npm i</code> to install the dependencies that needs the proyect. (Just for the server folder)</p>
+</li>
+<li>
+<p>Install <strong><a href="https://www.apachefriends.org/download.html">XAMPP</a></strong></p>
+</li>
+<li>
+<p>Open MySQL with XAMPP and create a database named <code>siase</code></p>
+</li>
+<li>
+<p>Import the sql file named <code>siase.sql</code> that it's on the <strong><a href="https://github.com/Luisrjm09/ADBD">repository</a></strong></p>
+</li>
+<li>
+<p>Open a terminal on the folder <code>server</code> of the downloaded repository and execute <code>npm run server</code></p>
+</li>
+</ol>
+<p>If you get an error, you are free to edit the file <code>.env</code> that it's on the <code>server</code> folder in order to put the configuration of your XAMPP to stablish a correct connection.</p>
+<p>Now, you can continue the next section using the same API.</p>
+</article>
 
-
-
-
-
+</section>
 
             </div>
             
