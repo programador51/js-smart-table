@@ -1,7 +1,7 @@
 {
   "name": "js-smart-table",
-  "version": "1.0.4",
-  "description": "js-smart-table allows you\r * Tabulate data\r * Paginate\r * Sort \r     * API Sort (if the API allows it)\r     * Client side **TO BE RELEASED**\r * Do a \"reference\" to an specific row.",
+  "version": "1.0.5",
+  "description": "Tabulate data from an API an make it sortable (if the API allows it).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
