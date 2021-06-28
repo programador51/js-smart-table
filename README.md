@@ -9,3 +9,4 @@ Video-Demo of how tabulates the data and what you can do with it.
 * **[Documentation](https://programador51.github.io/js-smart-table/)**
 * **[Video tutorial](https://www.youtube.com/watch?v=R1qauiXDGDY)**
 * **[Example code](https://github.com/programador51/example-js-smart-table)**
+* **[DEMO ONLINE](https://youthful-hopper-033b16.netlify.app/)**
